@@ -88,12 +88,13 @@ for (let i = 0; i < services.length; i++) {
 let nav = document.getElementById("nav1");
 let navbar1 = document.getElementById("navbar1");
 function  openNav() {
-    if (navbar1.style.backgroundColor == "")
-    navbar1.style.backgroundColor = "#404C56";
-    else  {
+    if (navbar1.style.backgroundColor == "") {
+        navbar1.style.backgroundColor = "#404C56";
+    } else  {
         navbar1.style.backgroundColor = "";
     }
 }
+let scrollTop = document.querySelector('.scroll-top');
 
 function toggleScrollTop() {
     if (scrollTop) {
