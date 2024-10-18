@@ -83,24 +83,20 @@ html {
 }
 @media (max-width: 768px) {
     .carousel-caption h1 {
-        font-size: 2rem;
+        font-size: 1.3rem;
     }
 
     .carousel-caption p {
-        font-size: 1rem;
-    }
-
-    .carousel-item {
-        height: 70vh;
+        font-size: 0.8rem;
     }
     .navbar{
       color:#fd680e !important;
     }
     #nav1:hover{
-      background-color: #fd680e !important;
+      background-color: #2c3e50; 
+      border: none;
     }
 }
-
 .h1-bg {
     background-color: #2c3e50;
     width: 100%;
