@@ -1,0 +1,436 @@
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Poppins:wght@300;400;500;600;700&display=swap');
+
+:root {
+    --Merriweather: 'Merriweather', serif;
+    --Poppins: 'Poppins', sans-serif;
+}
+
+body,
+html {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+.navbar {
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 99999;
+}
+
+.navbar-brand {
+    color: whitesmoke;
+    font-family: var(--Merriweather);
+    font-size: 25px;
+}
+
+.navbar-brand:hover{
+  color:#fd680e !important;
+}
+
+.nav-item,
+.nav-link {
+    margin: 0 15px;
+    font-family: var(--Poppins);
+    color: whitesmoke;
+}
+
+.nav-link.active {
+    color: #fd680e !important;
+    text-decoration: underline;
+    text-underline-offset: 15px;
+    font-weight: normal;
+}
+
+.nav-link:hover {
+    color: #fd680e !important;
+}
+
+.carousel,
+.carousel-inner,
+.carousel-item,
+.carousel-item img {
+    width: 100%;
+    height: 100vh;
+    object-fit: cover;
+}
+
+.carousel-caption {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    bottom: 30%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+
+    width: 100%;
+    padding: 0 15px;
+}
+
+.carousel-caption h1 {
+    font-size: 3rem;
+    color: white;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+    font-family: var(--Merriweather);
+}
+
+.carousel-caption p {
+    font-size: 1.5rem;
+    color: white;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.9);
+    font-family: var(--Poppins);
+}
+@media (max-width: 768px) {
+    .carousel-caption h1 {
+        font-size: 1.3rem;
+    }
+
+    .carousel-caption p {
+        font-size: 0.8rem;
+    }
+    .navbar{
+      color:#fd680e !important;
+    }
+    #nav1:hover{
+      background-color: #2c3e50; 
+      border: none;
+    }
+}
+.h1-bg {
+    background-color: #2c3e50;
+    width: 100%;
+    padding: 2rem 0;
+}
+
+.h1-bg h1 {
+    color: whitesmoke;
+    text-align: center;
+    font-size: 2rem;
+}
+
+@media (max-width: 768px) {
+    .h1-bg h1 {
+        font-size: 1.5rem;
+    }
+}
+
+.about .content h3 {
+    font-size: 1.75rem;
+    font-weight: 700;
+}
+
+.about .content .fst-italic {
+    color: color-mix(in srgb, var(--default-color), var(--contrast-color) 50%);
+}
+
+.about .content ul {
+    list-style: none;
+    padding: 0;
+}
+
+.about .content ul li {
+    padding: 10px 0 0 0;
+    display: flex;
+}
+
+.about .content ul i {
+    color: var(--accent-color);
+    margin-right: 0.5rem;
+    line-height: 1.2;
+    font-size: 1.25rem;
+}
+
+.about .content p:last-child {
+    margin-bottom: 0;
+}
+
+.destination .card {
+    background-color: #ffffff;
+    color: #444444;
+    box-shadow: 0px 2px 12px rgba(0, 0, 0, 0.1);
+    border-radius: 0;
+    margin-bottom: 20px;
+    border: 0;
+    height: 100%;
+    position: relative;
+
+}
+
+.destination .card .img {
+    position: relative;
+    padding: 0;
+    height: 300px;
+}
+
+.destination .img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.destination .card .icon {
+    color: #fd680e;
+    background-color: color-mix(in srgb, #fd680e, white 92%);
+    border: 4px solid #ffffff;
+    width: 72px;
+    height: 72px;
+    text-align: center;
+    position: absolute;
+    border-radius: 50%;
+    left: calc(50% - 32px);
+    bottom: -36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    line-height: 0;
+    z-index: 999999;
+}
+
+.destination .card:hover .icon {
+    background-color: #fd680e;
+    color: #ffff;
+}
+
+.destination .card h2 {
+    text-align: center;
+    font-weight: 700;
+    font-size: 24px;
+    padding: 0;
+    margin: 50px 0 12px 0;
+}
+
+.destination .card h2 a {
+    color: #462918;
+}
+
+.destination .card h2 a:hover {
+    color: #fd680e;
+}
+
+.destination .card p {
+    font-size: 14px;
+    line-height: 24px;
+    margin-bottom: 0;
+    padding: 0 30px 30px 30px;
+}
+
+.section-title {
+    text-align: center;
+    padding-bottom: 60px;
+    position: relative;
+}
+
+.section-title h2 {
+    font-size: 32px;
+    font-weight: 300;
+    margin-bottom: 15px;
+}
+
+.section-title p {
+    margin-bottom: 0;
+}
+
+.services .service-item {
+    background-color: #ffffff;
+    box-shadow: 0px 5px 90px 0px rgba(0, 0, 0, 0.1);
+    padding: 60px 30px;
+    transition: all ease-in-out 0.3s;
+    border-radius: 18px;
+    border-bottom: 5px solid #ffffff;
+    height: 100%;
+}
+
+.services .service-item .icon {
+    color: #ffffff;
+    background: #fd680e;
+    margin: 0;
+    width: 64px;
+    height: 64px;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    font-size: 28px;
+    transition: ease-in-out 0.3s;
+}
+
+.services .service-item h3 {
+    font-weight: 700;
+    margin: 10px 0 15px 0;
+    font-size: 22px;
+    transition: ease-in-out 0.3s;
+    color: #444444;
+    ;
+}
+
+.services .service-item p {
+    line-height: 24px;
+    font-size: 14px;
+    margin-bottom: 0;
+}
+
+@media (min-width: 1365px) {
+    .services .service-item:hover {
+        transform: translateY(-10px);
+        border-color: #fd680e;
+    }
+
+    .services .service-item:hover h3 {
+        color: #fd680e;
+    }
+}
+
+.carousel-control-prev:hover .carousel-control-prev-icon,
+.carousel-control-next:hover .carousel-control-next-icon {
+    filter: invert(54%) sepia(89%) saturate(6463%) hue-rotate(359deg) brightness(99%) contrast(109%);
+    transition: all 0.3s ease;
+}
+.footer {
+    color:#444444;
+    background-color: #ffffff;
+    font-size: 14px;
+    padding-bottom: 50px;
+    position: relative;
+  }
+  
+  .footer .footer-top {
+    padding-top: 50px;
+  }
+  
+  .footer .footer-about .logo {
+    margin-bottom: 25px;
+  }
+  
+  .footer .footer-about .logo img {
+    max-height: 40px;
+    margin-right: 6px;
+  }
+  
+  .footer .footer-about .logo span {
+    color: #462918;
+    font-size: 30px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    font-family: var(--Merriweather);
+  }
+  
+  .footer .footer-about p {
+    font-size: 14px;
+    font-family: var(--Merriweather);
+  }
+  
+  .footer .social-links a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid color-mix(in srgb, #444444, transparent 50%);
+    font-size: 16px;
+    color: color-mix(in srgb, #444444, transparent 50%);
+    margin-right: 10px;
+    transition: 0.3s;
+  }
+  
+  .footer .social-links a:hover {
+    color: #fd680e;
+    border-color: #fd680e;
+  }
+  
+  .footer h4 {
+    font-size: 16px;
+    font-weight: bold;
+    position: relative;
+    padding-bottom: 12px;
+  }
+  
+  .footer .footer-links {
+    margin-bottom: 30px;
+  }
+  
+  .footer .footer-links ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .footer .footer-links ul i {
+    padding-right: 2px;
+    font-size: 12px;
+    line-height: 0;
+  }
+  
+  .footer .footer-links ul li {
+    padding: 10px 0;
+    display: flex;
+    align-items: center;
+  }
+  
+  .footer .footer-links ul li:first-child {
+    padding-top: 0;
+  }
+  
+  .footer .footer-links ul a {
+    color: color-mix(in srgb, #444444, transparent 20%);
+    display: inline-block;
+    line-height: 1;
+  }
+  
+  .footer .footer-links ul a:hover {
+    color: #fd680e;
+  }
+  
+  .footer .footer-contact p {
+    margin-bottom: 5px;
+  }
+  
+  .footer .copyright {
+    padding-top: 25px;
+    padding-bottom: 25px;
+    background-color: color-mix(in srgb, #444444, transparent 95%);
+  }
+  
+  .footer .copyright p {
+    margin-bottom: 0;
+  }
+  
+  .footer .credits {
+    margin-top: 6px;
+    font-size: 13px;
+  }
+  .footer .credits a:hover{
+    color: #fd680e;
+  }
+  .scroll-top {
+    position: fixed;
+    right: 15px;
+    bottom: 15px;
+    z-index: 99999;
+    background-color: #fd680e;
+    width: 44px;
+    height: 44px;
+    border-radius: 50px;
+    transition: all 0.4s;
+  }
+  
+  .scroll-top i {
+    font-size: 24px;
+    color: #ffffff; 
+    line-height: 0;
+  }
+  
+  .scroll-top:hover {
+    background-color: color-mix(in srgb, #fd680e, transparent 20%);
+    color: var(--contrast-color);
+  }
+  
+  .scroll-top.active {
+    visibility: visible;
+    opacity: 1;
+    bottom: 15px;
+  }
+  
