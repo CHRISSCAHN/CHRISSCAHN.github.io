@@ -69,7 +69,7 @@ for (let i = 0; i < captions.length; i++) {
               <p>Lorem ipsum, dolor sit amet consectetur</p>
               <a href="` + captions[i].image + `" title="` + captions[i].title + `" data-gallery="portfolio-gallery-app"
                 class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-              <a href="` + captions[i].image + `" title="More Details" class="details-link"><i
+              <a href="` + captions[i].link + `" title="More Details" class="details-link"><i
                   class="bi bi-link-45deg"></i></a>
             </div>
           </div>
