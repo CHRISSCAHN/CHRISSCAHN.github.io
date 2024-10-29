@@ -1,4 +1,11 @@
 const captions = [
+     {
+        zoom: "images/Italy.jpg",
+        link: "https://chrisscahn.github.io/CHRISSCAHN/SAM/",
+        image: "images/Italy.jpg",
+        type: "filter-web",
+        title: "Italy"
+    },
     {
         zoom: "images/chat.jpg",
         link: "images/chat.jpg",
