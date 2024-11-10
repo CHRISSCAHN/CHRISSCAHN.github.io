@@ -1,0 +1,210 @@
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Poppins:wght@300;400;500;600;700&display=swap');
+
+:root {
+    --Merriweather: 'Merriweather', serif;
+    --Poppins: 'Poppins', sans-serif;
+}
+
+body,
+html {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    
+}
+
+.footer {
+    color:#444444;
+    background-color: #ffffff;
+    font-size: 14px;
+    padding-bottom: 50px;
+    position: relative;
+  }
+  
+  .footer .footer-top {
+    padding-top: 50px;
+  }
+  
+  .footer .footer-about .logo {
+    margin-bottom: 25px;
+  }
+  
+  .footer .footer-about .logo img {
+    max-height: 40px;
+    margin-right: 6px;
+  }
+  
+  .footer .footer-about .logo span {
+    color: #462918;
+    font-size: 30px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    font-family: var(--Merriweather);
+  }
+  
+  .footer .footer-about p {
+    font-size: 14px;
+    font-family: var(--Merriweather);
+  }
+  
+  .footer .social-links a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid color-mix(in srgb, #444444, transparent 50%);
+    font-size: 16px;
+    color: color-mix(in srgb, #444444, transparent 50%);
+    margin-right: 10px;
+    transition: 0.3s;
+  }
+  
+  .footer .social-links a:hover {
+    color: #fd680e;
+    border-color: #fd680e;
+  }
+  
+  .footer h4 {
+    font-size: 16px;
+    font-weight: bold;
+    position: relative;
+    padding-bottom: 12px;
+  }
+  
+  .footer .footer-links {
+    margin-bottom: 30px;
+  }
+  
+  .footer .footer-links ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .footer .footer-links ul i {
+    padding-right: 2px;
+    font-size: 12px;
+    line-height: 0;
+  }
+  
+  .footer .footer-links ul li {
+    padding: 10px 0;
+    display: flex;
+    align-items: center;
+  }
+  
+  .footer .footer-links ul li:first-child {
+    padding-top: 0;
+  }
+  
+  .footer .footer-links ul a {
+    color: color-mix(in srgb, #444444, transparent 20%);
+    display: inline-block;
+    line-height: 1;
+  }
+  
+  .footer .footer-links ul a:hover {
+    color: #fd680e;
+  }
+  
+  .footer .footer-contact p {
+    margin-bottom: 5px;
+  }
+  
+  .footer .copyright {
+    padding-top: 25px;
+    padding-bottom: 25px;
+    background-color: color-mix(in srgb, #444444, transparent 95%);
+  }
+  
+  .footer .copyright p {
+    margin-bottom: 0;
+  }
+  
+  .footer .credits {
+    margin-top: 6px;
+    font-size: 13px;
+  }
+  .footer .credits a:hover{
+    color: #fd680e;
+  }
+  input[type="search"]::-webkit-search-cancel-button {
+    cursor: pointer;
+}
+
+.cart-table img {
+  width: 50px;
+  height: auto;
+}
+.order-summary {
+  background-color: #f8f9fa;
+  padding: 20px;
+  border-radius: 5px;
+}
+.apply-btn {
+  background-color: #ff6b6b;
+  color: #fff;
+}
+.checkout-btn {
+  background-color: #6f42c1;
+  color: #fff;
+}
+.btn-quantity {
+  width: 35px;
+  text-align: center;
+}
+.product-details {
+  display: flex;
+  flex-direction: row;
+}
+@media (max-width: 767px) {
+  .product-details {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .order-summary {
+    margin-top: 20px;
+  }
+}
+.product-card {
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 15px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  height: 350px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.product-card img {
+  height: 150px;
+  object-fit: cover;
+}
+.product-card .btn-add-to-cart {
+  background-color: #ff5722;
+  color: #fff;
+  border: none;
+  width: 100%;
+  font-weight: bold;
+}
+.product-card .price {
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: #ff5722;
+}
+.product-card .discount-price {
+  font-size: 0.9rem;
+  color: #999;
+  text-decoration: line-through;
+  margin-left: 5px;
+}
+.product-card .location, .product-card .reviews, .product-card .sold-count {
+  font-size: 0.8rem;
+  color: #757575;
+}
+.rating-stars {
+  color: #ffb400;
+}

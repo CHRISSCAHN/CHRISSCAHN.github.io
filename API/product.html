@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>CHANCHAN SHOP</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
+    <style>
+        .product-section {
+            background-color: #f8f9fa;
+            padding: 3rem;
+            border-radius: 15px;
+            position: relative;
+        }
+        .product-image {
+            max-width: 100%;
+            border-radius: 15px;
+        }
+        .price {
+            font-size: 2rem;
+            font-weight: bold;
+        }
+        .btn-custom {
+            font-size: 1rem;
+            padding: 0.5rem 1.5rem;
+            display: inline-flex;
+            align-items: center;
+        }
+        .btn-custom i {
+            margin-left: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation-->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container px-4 px-lg-5">
+            <a class="navbar-brand" href="#!">CHANCHAN SARI- SARI STORE</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
+                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#!">About</a></li>
+                    <li></li>
+                </ul>
+
+                <!-- Cart Button -->
+                <form class="d-flex">
+                    <a href="cart.html">
+                        <button class="btn btn-outline-dark" type="button">
+                            <i class="bi-cart-fill me-1"></i>
+                            Cart
+                            <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
+                        </button>
+                    </a>
+                </form>
+            </div>
+        </div>
+    </nav>
+    <!-- Product section-->
+    <section class="py-5">
+        <div class="container-fluid px-4 px-lg-5 ">
+            <div class="row gx-4 gx-lg-5 align-items-center" id="row">
+
+            </div>
+        </div>
+    </section>
+    <!-- Related items section-->
+    <section class="py-5 bg-light">
+        <div class="container px-4 px-lg-5 mt-5">
+            <h2 class="fw-bolder mb-4" id="related" style="text-transform: capitalize;">Related products</h2>
+            <div class="row gx-4 gx-lg-5 row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 justify-content-center"
+                id="rel">
+
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Modal Structure -->
+    <div class="modal fade" id="productModal" tabindex="-1" aria-labelledby="productModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered rounded-5">
+            <div class="modal-content " id="modal">
+
+
+
+            </div>
+        </div>
+    </div>
+    <!-- Footer-->
+    <footer class="footer position-relative light-background">
+
+        <div class="container footer-top">
+            <div class="row gy-4">
+                <div class="col-lg-5 col-md-12 footer-about">
+                    <a href="index.html" class="logo d-flex align-items-center">
+                        <span class="sitename">CHANCHAN</span>
+                    </a>
+                    <p>Explore the beauty and culture of Italy. From the ancient ruins of Rome to the romantic canals of
+                        Venice, our mission is to showcase the incredible destinations and experiences that Italy has to
+                        offer.</p>
+                    <div class="social-links d-flex mt-4">
+                        <a href="https://twitter.com" target="_blank"><i class="bi bi-twitter"></i></a>
+                        <a href="https://facebook.com" target="_blank"><i class="bi bi-facebook"></i></a>
+                        <a href="https://instagram.com" target="_blank"><i class="bi bi-instagram"></i></a>
+                        <a href="https://linkedin.com" target="_blank"><i class="bi bi-linkedin"></i></a>
+                    </div>
+                </div>
+
+                <div class="col-lg-2 col-6 footer-links">
+                    <h4>Useful Links</h4>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Discover Italy</a></li>
+                        <li><a href="#">Travel Guides</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-2 col-6 footer-links">
+                    <h4>Our Services</h4>
+                    <ul>
+                        <li><a href="#">Travel Planning</a></li>
+                        <li><a href="#">Culinary Tours</a></li>
+                        <li><a href="#">Cultural Experiences</a></li>
+                        <li><a href="#">Accommodation Booking</a></li>
+                        <li><a href="#">Guided Tours</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-3 col-md-12 footer-contact text-center text-md-start">
+                    <h4>Contact Us</h4>
+                    <p>Piazza di Spagna, 1</p>
+                    <p>Rome, RM 00187</p>
+                    <p>Italy</p>
+                    <p class="mt-4"><strong>Phone:</strong> <span>+39 06 12345678</span></p>
+                    <p><strong>Email:</strong> <span>info@italytravel.com</span></p>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="container copyright text-center mt-4">
+            <p>© <span>Copyright</span> <strong class="sitename">Italy Travel</strong> <span>All Rights Reserved</span>
+            </p>
+            <div class="credits">
+                Designed by <a href="https://www.facebook.com/tiantiannzz">CHANCHAN</a>
+            </div>
+        </div>
+
+    </footer>
+    <!-- Bootstrap core JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+
+        const categoryColors = {
+            "beauty": "#FFB6C1",
+            "fragrances": "#FFDAB9",
+            "furniture": "#8B4513",
+            "groceries": "#32CD32",
+            "home-decoration": "#A0522D",
+            "kitchen-accessories": "#FFD700",
+            "laptops": "#4682B4",
+            "mens-shirts": "#1E90FF",
+            "mens-shoes": "#00008B",
+            "mens-watches": "#708090",
+            "mobile-accessories": "#8A2BE2",
+            "motorcycle": "#2F4F4F",
+            "skin-care": "#FFDEAD",
+            "smartphones": "#0073e6",
+            "sports-accessories": "#FF4500",
+            "sunglasses": "#4682B4",
+            "tablets": "#5F9EA0",
+            "tops": "#FF6347",
+            "vehicle": "#000000",
+            "womens-bags": "#B03060",
+            "womens-dresses": "#FF69B4",
+            "womens-jewellery": "#DAA520",
+            "womens-shoes": "#8B0000",
+            "womens-watches": "#FFD700"
+        };
+        // eto e para sa pag get nung galing sa index
+        var row = document.getElementById("row");
+
+        const getID = async (id) => {
+            const res = await fetch('https://dummyjson.com/products/' + id);
+            const data = await res.json();
+            const category1 = data;
+
+            console.log(category1);
+            document.getElementById("related").innerHTML = `${category1.category}`;
+            row.innerHTML = `
+       <div class="product-section d-flex flex-column flex-md-row align-items-center">
+        <div class="col-md-6 text-center">
+            <img src="` + category1.images[0] + `" alt="` + category1.title + `" style="height: 500px;" class="product-image">
+        </div>
+        <div class="col-md-6 mt-4 mt-md-0">
+            <h2 class="display-5">` + category1.title + `</h2>
+            <span class="text-decoration-line-through">$` + category1.price + `</span>
+            <p class="price">$` + category1.discountPercentage + `</p>
+            <p class="text-muted">
+               ` + category1.description + `
+            </p>
+            <button class="btn btn-dark flex-shrink-0" id="btn1" data-value="` + category1.id + `" onclick="modal(event);" data-toggle="modal" data-target="#productModal" type="button">
+                    <i class="bi-cart-fill me-1"></i>
+                    Add to cart
+                </button>
+        </div>
+    </div>`;
+
+            fetchProducts(category1.category);
+        };
+
+        // eto para sa pagkuha ng related prod
+        const fetchProducts = async (categoryId) => {
+            try {
+                const res = await fetch('https://dummyjson.com/products/category/' + categoryId);
+                const data = await res.json();
+                category2 = data.products;
+
+                console.log(category2);
+
+                const container = document.getElementById("rel");
+                container.innerHTML = '';
+
+
+                for (let i = 0; i < category2.length; i++) {
+                    var imageUrl = category2[i].images[0] ? category2[i].images[0] : 'images/default.jpg';
+                    var rating = Math.round(category2[i].rating);
+                    const reviewCount = category2.reviews ? category2.reviews.length : Math.floor(Math.random() * 500);
+
+                    const bgColor = categoryColors[data.products[i].category] || '#ffffff';
+                    var stars = '';
+                    for (let j = 1; j <= 5; j++) {
+                        if (j <= rating) {
+                            stars += '<span class="text-warning">&#9733;</span>';
+                        } else {
+                            stars += '<span class="text-warning">&#9734;</span>';
+                        }
+                    }
+                    container.innerHTML += `   <div class="col-12 col-sm-12 col-md-6 col-lg-4 mb-4">
+                                <div class="product-card p-3 h-100">
+                                    <!-- Product Image with Fallback -->
+                                    <img src="` + imageUrl + `" class="card-img-top mb-3 img-fluid" style="height: 200px; background-color: ` + bgColor + `" alt="` + category2[i].title + `" 
+                                        onerror="this.onerror=null;this.src='images/default.jpg';" />
+                                    <h6 class="fw-bold">` + category2[i].title + `</h6>
+                                    <div class="d-flex align-items-center mb-2">
+                                        <span class="rating-stars">` + stars + `</span> 
+                                        <span class="ms-2 reviews">` + reviewCount + ` Reviews</span> 
+                                    </div>
+                                   <div class="location">` + category2[i].brand + ` | ` + category2[i].shippingInformation + `</div>
+                                    <div class="price mt-2">
+                                        $ ` + category2[i].discountPercentage + ` 
+                                        <span class="discount-price">$ ` + category2[i].price + `</span> 
+                                    </div>
+                                    <div class="sold-count mt-1">` + category2[i].stock + ` sold</div>
+                                    <a href="product.html?id=` + category2[i].id + `" class="btn btn-dark mt-auto">Quick View</a>
+                                </div>
+                            </div>`;
+                }
+            } catch (error) {
+                console.error('Error fetching data:', error);
+            }
+        }
+
+
+        // eto para sa pagshow ng modal
+        async function modal(event) {
+            if (!event || !event.target) {
+                console.error('Event or target not available');
+                return;
+            }
+
+            const productId = event.currentTarget.getAttribute('data-value');
+
+            try {
+                const res = await fetch('https://dummyjson.com/products/' + productId);
+                const product = await res.json();
+
+                console.log(product);
+
+                const container = document.getElementById("modal");
+                container.innerHTML = '';
+
+                const imageUrl = product.images.length > 0 ? product.images[0] : 'images/default.jpg';
+
+                container.innerHTML += `
+                    <div class="modal-header">
+                        <input type="hidden" id="hidden" value="` + product.id + `">
+                        <h5 class="modal-title" id="productModalLabel">` + product.title + `</h5>
+                        <button type="button" class="close text-dark" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <img src="` + imageUrl + `" onerror="this.onerror=null;this.src='images/default.jpg';" class="img-fluid mb-3" alt="Product Image" style="object-fit: contain; max-height: 300px; width: 100%;">
+                            </div>
+                            <div class="col-md-6">
+                                <p class="h4">$` + product.discountPercentage + `</p>
+                                <p>` + product.description + `</p>
+                                <p><strong>Dimensions:</strong></p>
+                        <ul>
+                            <li>Width: ` + product.dimensions.width + ` cm</li>
+                            <li>Height: ` + product.dimensions.height + ` cm</li>
+                            <li>Depth: ` + product.dimensions.depth + ` cm</li>
+                        </ul>
+                                <div class="form-group">
+                                    <label for="colorSelect">Color</label>
+                                    <select id="colorSelect" class="form-control">
+                                        <option>Choose an option</option>
+                                        <option>Black</option>
+                                        <option>Blue</option>
+                                        <option>White</option>
+                                    </select>
+                                </div>
+                                <div class="form-group d-flex align-items-center">
+                                    <input type="number" class="form-control w-25 me-2" value="1" min="1" id="productQuantity">
+                                    <button class="btn btn-dark flex-shrink-0" id="addMo" data-dismiss="modal" data-value="` + product.id + `" onclick="addToCart(` + product.id + `);">Add to Cart</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>`;
+            } catch (error) {
+                console.error('Error fetching product data:', error);
+            }
+        }
+
+        function addToCart(productId) {
+            const quantityInput = document.getElementById('productQuantity');
+            const quantity = parseInt(quantityInput.value) || 1;  
+        
+        
+            if (quantity <= 0) {
+                alert('Please select a valid quantity.');
+                return;
+            }
+        
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+        
+            // kunin sa dummyjson
+            fetch(`https://dummyjson.com/products/${productId}`)
+                .then(res => res.json())
+                .then(product => {
+                    const existingItemIndex = cart.findIndex(item => item.id === product.id);
+                    if (existingItemIndex > -1) {
+                       
+                        cart[existingItemIndex].quantity += quantity;
+                    } else {
+                        
+                        cart.push({
+                            ...product,
+                            quantity: quantity
+                        });
+                    }
+        
+                   
+                    localStorage.setItem('cart', JSON.stringify(cart));
+        
+                  
+                    updateCartCount();
+        
+                    
+                    alert(`${product.title} added to cart with quantity: ${quantity}`);
+                })
+                .catch(error => console.error("Error fetching product data:", error));
+        }
+        
+       
+        function updateCartCount() {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const itemCount = cart.reduce((total, item) => total + item.quantity, 0);
+            document.querySelector('.badge').textContent = itemCount;
+        }
+       
+        updateCartCount();
+        function loadData() {
+            const url = new URLSearchParams(window.location.search);
+            if (url.has("id")) {
+                getID(url.get("id"));
+            } else {
+                row.innerHTML = 'NO DATA';
+            }
+        }
+
+        loadData();
+        // para scroll to top
+        
+        window.history.scrollRestoration = 'manual';
+    </script>
+</body>
+
+</html>
