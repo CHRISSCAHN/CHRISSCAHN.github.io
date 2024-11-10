@@ -29,7 +29,7 @@ const captions = [
     },
     {
         zoom: "images/shop.jpg",
-        link: "images/shop.jpg",
+        link: "https://chrisscahn.github.io/CHRISSCAHN/API/",
         image: "images/shop.jpg",
         type: "filter-web",
         title: "CHANCHAN Shop"
