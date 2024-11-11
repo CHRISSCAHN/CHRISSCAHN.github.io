@@ -10,87 +10,83 @@
     <link rel="icon" type="image/x-icon" href="images/favicon.ico" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+
     <link href="style.css" rel="stylesheet">
 </head>
 
 <body>
-    <!-- Navigation-->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg">
+        <div class="container d-flex justify-content-between">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#firstNavbar"
+                aria-controls="firstNavbar" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="firstNavbar">
+                <div class="d-flex flex-column flex-lg-row">
+                    <a href="#" class="text-black me-3">Seller Centre</a>
+                    <a href="#" class="text-black me-3">Start Selling</a>
+                    <a href="#" class="text-black me-3">Download</a>
+                    <a href="#" class="text-black">Follow us on
+                        <i class="bi bi-facebook ms-1"></i>
+                        <i class="bi bi-instagram"></i>
+                    </a>
+                </div>
+                <div class="ms-auto">
+                    <a href="#" class="text-black me-3">Notifications</a>
+                    <a href="#" class="text-black me-3">Help</a>
+                    <a href="#" class="text-black me-3">English</a>
+                    <a href="index.html" class="text-black">Home</a> |
+                    <a href="#" class="text-black ms-1">About</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <nav class="navbar navbar-expand-lg">
         <div class="container px-4 px-lg-5">
-            <a class="navbar-brand" href="#!">CHANCHAN SARI- SARI STORE</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
-                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="index.html">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#!">About</a></li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">Shop</a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown" id="drop">
-                            <li><a class="dropdown-item" href="#" onclick="change(event);" data-value="all">All
-                                    Products</a></li>
-                            <li>
-                                <hr class="dropdown-divider" />
-                            </li>
-                            <li><a class="dropdown-item" href="#" onclick="change(event);" data-value="smartphones">Tech
-                                    Gadgets</a>
-                            </li>
-                            <li><a class="dropdown-item" href="#" onclick="change(event);"
-                                    data-value="mens-shirts">Men</a>
-                            </li>
-                            <li><a class="dropdown-item" href="#" onclick="change(event);"
-                                    data-value="womens-dresses">Women</a>
-                            </li>
-                            <li><a class="dropdown-item" href="#" onclick="change(event);" data-value="skin-care">Skin
-                                    Care</a>
-                            </li>
-                            <li><a class="dropdown-item" href="#" onclick="change(event);"
-                                    data-value="sports-accessories">Sports accessories</a>
-                            </li>
-                            <li><a class="dropdown-item" href="#" onclick="change(event);"
-                                    data-value="laptops">Laptop</a>
-                            </li>
-                            <li><a class="dropdown-item" href="#" onclick="change(event);"
-                                    data-value="womens-shoes">Women's footwear</a>
-                            </li>
-                            <li><a class="dropdown-item" href="#" onclick="change(event);" data-value="mens-shoes">Men's
-                                    Shoes</a>
-                            </li>
-                            <li><a class="dropdown-item" href="#" onclick="change(event);"
-                                    data-value="womens-jewellery">
-                                    Accessories</a>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
-
-                <form class="d-flex me-2 position-relative" role="search" id="searchForm">
-                    <input class="form-control me-2" type="search" id="search" placeholder="Search" aria-label="Search"
-                        oninput="getProd()">
-                    <button class="btn btn-outline-dark" id="submit" type="button" onclick="getProd();"
-                        style="cursor: pointer;">Search</button>
-
-                    <!-- Dropdown for suggestions -->
+            <a class="navbar-brand text-black fw-bold" href="#!">CHANCHAN SARI- SARI STORE</a>
+            <div class="d-flex w-100 align-items-center">
+                <form class="d-flex me-2 position-relative w-100" role="search" id="searchForm">
+                    <input class="form-control w-100" type="search" id="search" placeholder="Search" aria-label="Search" oninput="getProd()">
                     <div id="suggestions" class="dropdown-menu" style="display: none;"></div>
                 </form>
-
-                <!-- Cart Button -->
-                <form class="d-flex">
-                    <a href="cart.html">
-                        <button class="btn btn-outline-dark" type="button">
-                            <i class="bi-cart-fill me-1"></i>
-                            Cart
-                            <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
-                        </button>
-                    </a>
-                </form>
+                <a href="cart.html">
+                    <button class="btn btn-outline-dark d-flex align-items-center" type="button">
+                        <i class="bi bi-cart3"></i>
+                        <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
+                    </button>
+                </a>
             </div>
         </div>
     </nav>
 
+    <div class="container-fluid py-2">
+        <div class="d-flex justify-content-center">
+            <ul class="nav bottom-links">
+                <li class="nav-item"><a class="nav-link text-black" href="#" onclick="fetchProducts();"
+                        data-value="all">All Products</a></li>
+                <li class="nav-item"><a class="nav-link text-black" href="#" onclick="change(event);"
+                        data-value="smartphones">Tech Gadgets</a></li>
+                <li class="nav-item"><a class="nav-link text-black" href="#" onclick="change(event);"
+                        data-value="mens-shirts">Men</a></li>
+                <li class="nav-item"><a class="nav-link text-black" href="#" onclick="change(event);"
+                        data-value="womens-dresses">Women</a></li>
+                <li class="nav-item"><a class="nav-link text-black" href="#" onclick="change(event);"
+                        data-value="skin-care">Skin Care</a></li>
+                <li class="nav-item"><a class="nav-link text-black" href="#" onclick="change(event);"
+                        data-value="sports-accessories">Sports Accessories</a></li>
+                <li class="nav-item"><a class="nav-link text-black" href="#" onclick="change(event);"
+                        data-value="laptops">Laptop</a></li>
+                <li class="nav-item"><a class="nav-link text-black" href="#" onclick="change(event);"
+                        data-value="womens-shoes">Women's Footwear</a></li>
+                <li class="nav-item"><a class="nav-link text-black" href="#" onclick="change(event);"
+                        data-value="mens-shoes">Men's Shoes</a></li>
+                <li class="nav-item"><a class="nav-link text-black" href="#" onclick="change(event);"
+                        data-value="womens-jewellery">Accessories</a></li>
+            </ul>
+        </div>
+    </div>
     <!-- Header-->
 
     <!-- Section-->
@@ -169,31 +165,32 @@
     </footer>
     <script>
         const categoryColors = {
-            "beauty": "#FFB6C1",
-            "fragrances": "#FFDAB9",
-            "furniture": "#8B4513",
-            "groceries": "#32CD32",
-            "home-decoration": "#A0522D",
-            "kitchen-accessories": "#FFD700",
-            "laptops": "#4682B4",
-            "mens-shirts": "#1E90FF",
-            "mens-shoes": "#00008B",
-            "mens-watches": "#708090",
-            "mobile-accessories": "#8A2BE2",
-            "motorcycle": "#2F4F4F",
-            "skin-care": "#FFDEAD",
-            "smartphones": "#0073e6",
-            "sports-accessories": "#FF4500",
-            "sunglasses": "#4682B4",
-            "tablets": "#5F9EA0",
-            "tops": "#FF6347",
-            "vehicle": "#000000",
-            "womens-bags": "#B03060",
-            "womens-dresses": "#FF69B4",
-            "womens-jewellery": "#DAA520",
-            "womens-shoes": "#8B0000",
-            "womens-watches": "#FFD700"
+            "beauty": "#FFEBEE",
+            "fragrances": "#FFEFD5",
+            "furniture": "#D2B48C",
+            "groceries": "#98FB98",
+            "home-decoration": "#DEB887",
+            "kitchen-accessories": "#FFF8DC",
+            "laptops": "#B0C4DE",
+            "mens-shirts": "#ADD8E6",
+            "mens-shoes": "#B0E0E6",
+            "mens-watches": "#C0C0C0",
+            "mobile-accessories": "#D8BFD8",
+            "motorcycle": "#A9A9A9",
+            "skin-care": "#FFEBCD",
+            "smartphones": "#B3D9FF",
+            "sports-accessories": "#FFD1C1",
+            "sunglasses": "#B0C4DE",
+            "tablets": "#AFEEEE",
+            "tops": "#FFA07A",
+            "vehicle": "#D3D3D3",
+            "womens-bags": "#FFC0CB",
+            "womens-dresses": "#FFB6C1",
+            "womens-jewellery": "#FAFAD2",
+            "womens-shoes": "#CD5C5C",
+            "womens-watches": "#FFFACD"
         };
+
 
         const getProd = async () => {
             var search = document.getElementById("search").value;
@@ -222,25 +219,32 @@
                         }
                         document.getElementById("related").innerHTML = `${data.products[i].category}`;
                         container.innerHTML += `
-                             <div class="col-12 col-sm-12 col-md-6 col-lg-4 mb-4">
-                                <div class="product-card p-3 h-100">
-                                    <!-- Product Image with Fallback -->
-                                    <img src="` + imageUrl + `" class="card-img-top mb-3 img-fluid" style="height: 200px;background-color: ` + bgColor + `" alt="` + data.products[i].title + `" 
-                                        onerror="this.onerror=null;this.src='images/default.jpg';" />
-                                    <h6 class="fw-bold">` + data.products[i].title + `</h6>
-                                    <div class="d-flex align-items-center mb-2">
-                                        <span class="rating-stars">` + stars + `</span> 
-                                        <span class="ms-2 reviews">` + reviewCount + ` Reviews</span> 
+                             <div class="col-12 col-sm-6 col-md-4 mb-4">
+                                <div class="card border-0 shadow-sm">
+                                    <div class="position-relative">
+                                    <img src="` + imageUrl + `" class="card-img-top img-fluid" alt="Product Image" style="object-fit: contain; width: 100%; max-height: 300px;background-color: ` + bgColor + `;">
+                                    <span class="badge bg-danger position-absolute top-0 start-0 m-2">HOT</span>
                                     </div>
-                                    <div class="location">` + data.products[i].brand + ` | ` + data.products[i].shippingInformation + `</div>
-                                    <div class="price mt-2">
-                                        $ ` + data.products[i].discountPercentage + ` 
-                                        <span class="discount-price">$ ` + data.products[i].price + `</span> <!-- Assuming discountPrice is available -->
+                                    <div class="card-body">
+                                    <p class="text-uppercase text-muted small mb-1">` + data.products[i].category + `</p>
+                                    <h5 class="card-title fw-bold mb-1">` + data.products[i].title + `</h5>
+                                    <p class="card-text text-muted small mb-2">` + data.products[i].description + `</p>
+                                    <div class="d-flex align-items-center">
+                                        <span class="text-decoration-line-through text-muted me-2">$` + data.products[i].price + `</span>
+                                        <span class="text-warning fw-bold">$` + data.products[i].discountPercentage + `</span>
                                     </div>
-                                    <div class="sold-count mt-1">` + data.products[i].stock + ` sold</div>
-                                    <a href="product.html?id=` + data.products[i].id + `" class="btn btn-dark mt-auto">Quick View</a>
+                                    <div class="d-flex justify-content-between align-items-center mt-3">
+                                         <div class="star-rating">
+                                        ${stars}
+                                    </div>
+                                    <div class="d-flex justify-content-end mt-3">
+                                        <a href="#" class="text-muted me-3"><i class="bi bi-heart"></i></a>
+                                        <a href="product.html?id=` + data.products[i].id + `"class="text-muted"><i class="bi bi-cart"></i></a>
+                                    </div>
                                 </div>
-                            </div>`;
+                                    </div>
+                                </div>
+                                </div>`;
                     }
                 } else {
                     container.innerHTML = "<p>No search results found</p>";
@@ -270,7 +274,9 @@
 
                 document.getElementById("related").innerHTML = `${drop}`;
                 var container = document.getElementById("con1");
+
                 container.innerHTML = '';
+
 
 
                 for (var i = 0; i < category.length; i++) {
@@ -278,6 +284,7 @@
                     var rating = Math.round(data.products[i].rating);
                     const reviewCount = category.reviews ? category.reviews.length : Math.floor(Math.random() * 500);
                     const bgColor = categoryColors[data.products[i].category] || '#ffffff';
+
                     var stars = '';
                     for (let j = 1; j <= 5; j++) {
                         if (j <= rating) {
@@ -287,25 +294,31 @@
                         }
                     }
                     container.innerHTML += `
-                             <div class="col-12 col-sm-12 col-md-6 col-lg-4 mb-4">
-                                <div class="product-card p-3 h-100">
-                                    <!-- Product Image with Fallback -->
-                                    <img src="` + imageUrl + `" class="card-img-top mb-3 img-fluid" style="height: 200px; background-color: ` + bgColor + `" alt="` + category[i].title + `" 
-                                        onerror="this.onerror=null;this.src='images/default.jpg';" />
-                                    <h6 class="fw-bold">` + category[i].title + `</h6>
-                                    <div class="d-flex align-items-center mb-2">
-                                        <span class="rating-stars">` + stars + `</span> 
-                                        <span class="ms-2 reviews">` + reviewCount + ` Reviews</span> 
+                             <div class="col-12 col-sm-6 col-md-4 mb-4">
+                                <div class="card border-0 shadow-sm">
+                                    <div class="position-relative">
+                                    <img src="` + imageUrl + `" class="card-img-top img-fluid" alt="Product Image" style="object-fit: contain; width: 100%; max-height: 300px;  background-color: ` + bgColor + `;">
+                                    <span class="badge bg-danger position-absolute top-0 start-0 m-2">HOT</span>
                                     </div>
-                                   <div class="location">` + category[i].brand + ` | ` + category[i].shippingInformation + `</div>
-                                    <div class="price mt-2">
-                                        $ ` + category[i].discountPercentage + ` 
-                                        <span class="discount-price">$ ` + category[i].price + `</span> 
+                                    <div class="card-body">
+                                    <p class="text-uppercase text-muted small mb-1">` + category[i].category + `</p>
+                                    <h5 class="card-title fw-bold mb-1">` + category[i].title + `</h5>
+                                    <p class="card-text text-muted small mb-2">` + category[i].description + `</p>
+                                    <div class="d-flex align-items-center">
+                                        <span class="text-decoration-line-through text-muted me-2">$` + category[i].price + `</span>
+                                        <span class="text-warning fw-bold">$` + category[i].discountPercentage + `</span>
                                     </div>
-                                    <div class="sold-count mt-1">` + category[i].stock + ` sold</div>
-                                    <a href="product.html?id=` + category[i].id + `" class="btn btn-dark mt-auto">Quick View</a>
+                                   <div class="d-flex justify-content-between align-items-center mt-3">
+                                         <div class="star-rating">
+                                        ${stars}
+                                    </div>
+                                    <div class="d-flex justify-content-end mt-3">
+                                        <a href="#" class="text-muted me-3"><i class="bi bi-heart"></i></a>
+                                        <a href="product.html?id=` + category[i].id + `"class="text-muted"><i class="bi bi-cart"></i></a>
+                                    </div>
+                                    </div>
                                 </div>
-                            </div>`;
+                                </div>`;
                 }
             } catch (error) {
                 console.error('Error fetching products:', error);
@@ -339,26 +352,31 @@
                     }
                     document.getElementById("related").innerHTML = `Products`;
                     container.innerHTML += `
-                            <div class="col-12 col-sm-12 col-md-6 col-lg-4 mb-4">
-                                <div class="product-card p-3 h-100">
-                                    <img src="` + imageUrl + `" class="card-img-top mb-3 img-fluid" style="height: 200px; background-color: ` + bgColor + `" alt="` + products[i].title + `" 
-                                        onerror="this.onerror=null;this.src='images/default.jpg';" />
-                                    <h6 class="fw-bold">` + products[i].title + `</h6>
-                                    <div class="d-flex align-items-center mb-2">
-                                        <span class="rating-stars">` + stars + `</span> 
-                                        <span class="ms-2 reviews">` + reviewCount + ` Reviews</span> 
+                            <div class="col-12 col-sm-6 col-md-4 mb-4">
+                                <div class="card border-0 shadow-sm">
+                                    <div class="position-relative">
+                                    <img src="` + imageUrl + `" class="card-img-top img-fluid" alt="Product Image" style="object-fit: contain; width: 100%; max-height: 300px; background-color: ` + bgColor + `;">
+                                    <span class="badge bg-danger position-absolute top-0 start-0 m-2">HOT</span>
                                     </div>
-                                    <div class="location">${products[i].brand} | ${products[i].shippingInformation}</div>
-                                    <div class="price mt-2">
-                                        $ ` + products[i].discountPercentage + ` 
-                                        <span class="discount-price">$ ` + products[i].price + `</span> 
+                                    <div class="card-body">
+                                    <p class="text-uppercase text-muted small mb-1">` + products[i].category + `</p>
+                                    <h5 class="card-title fw-bold mb-1">` + products[i].title + `</h5>
+                                    <p class="card-text text-muted small mb-2">` + products[i].description + `</p>
+                                    <div class="d-flex align-items-center">
+                                        <span class="text-decoration-line-through text-muted me-2">$` + products[i].price + `</span>
+                                        <span class="text-warning fw-bold">$` + products[i].discountPercentage + `</span>
                                     </div>
-                                    <div class="sold-count mt-1">` + products[i].stock + ` sold</div>
-                                    <a href="product.html?id=` + products[i].id + `" class="btn btn-dark mt-auto">Quick View</a>
+                                   <div class="d-flex justify-content-between align-items-center mt-3">
+                                         <div class="star-rating">
+                                        ${stars}
+                                    </div>
+                                    <div class="d-flex justify-content-end mt-3">
+                                        <a href="#" class="text-muted me-3"><i class="bi bi-heart"></i></a>
+                                        <a href="product.html?id=` + products[i].id + `"class="text-muted"><i class="bi bi-cart"></i></a>
+                                    </div>
+                                    </div>
                                 </div>
-                            </div>
-
-                            `;
+                                </div>`;
                 }
             } catch (error) {
                 console.error('Error fetching data:', error);

@@ -92,6 +92,22 @@
 
                     </div>
                     <button class="btn checkout-btn w-100">Checkout</button>
+                    <div>
+                        <small class="text-muted">WE ACCEPT:</small>
+                        <div class="d-flex align-items-center mt-2 flex-wrap">
+                            <div class="me-2 mb-2 p-1 rounded" style="background-color: #009cde;">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg" alt="PayPal" width="40" style="color:white;">
+                            </div>
+                            <div class="me-2 mb-2 p-1 rounded" style="background-color: #0070C9;">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/GCash_logo.svg/1920px-GCash_logo.svg.png?20230830061433" alt="GCash" width="40" style="color:white;">
+                            </div>
+                            <div class="me-2 mb-2 p-1 rounded" style="background-color: #00B14F;">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/Maya_logo.svg/1920px-Maya_logo.svg.png?20220502032254" alt="Maya" width="40" style="color:white; ">
+                            </div>
+                        </div>
+                        
+                        <small class="text-muted mt-2 d-block">Got a discount code? Add it in the next step.</small>
+                    </div>
                 </div>
             </div>
         </div>
@@ -132,108 +148,92 @@
             const cartItemsContainer = document.getElementById("tbody");
             const totalAmountElement = document.getElementById("total");
             const cart = JSON.parse(localStorage.getItem("cart")) || [];
-
+    
             if (cart.length === 0) {
                 cartItemsContainer.innerHTML = "<tr><td colspan='3' class='text-center'>Your cart is empty.</td></tr>";
-                totalAmountElement.innerHTML = "<h4>Total Amount: £0.00</h4>";
+                totalAmountElement.innerHTML = "<h4>Total Amount: $0.00</h4>";
+                document.querySelector('.badge').textContent = 0;
                 return;
             }
-
+    
             let totalAmount = 0;
             cartItemsContainer.innerHTML = "";  // Clear any existing rows
-
+    
             cart.forEach(product => {
                 const itemTotal = product.price * product.quantity;
                 totalAmount += itemTotal;
-
+    
                 const bgColor = product.quantity > 5 ? "#f8f9fa" : "#ffffff";
                 const imageUrl = (product.images && product.images.length > 0) ? product.images[0] : "images/default.jpg";
-
-
+    
                 cartItemsContainer.innerHTML += `
-                    <tr style="background-color:` + bgColor + `">
-                        <td class="product-details">
-                            <img src="` + imageUrl + `" alt="` + product.title + `" class="me-3" width="50">
-                            <div>
-                                <div>` + product.title + `</div>
-                                <small class="text-muted">` + product.category + `</small><br>
-                                <a href="#" class="text-muted" onclick="removeItem(` + product.id + `)">Remove</a>
+                    <tr style="background-color: ${bgColor}">
+                        <td>
+                            <div class="d-flex align-items-center">
+                                <div><img class="pic" src="${imageUrl}" alt=""></div>
+                                <div class="ps-3 d-flex flex-column justify-content">
+                                    <p class="fw-bold">${product.title}</p>
+                                    <small class="d-flex">
+                                        <span class="text-muted">Brand:</span>
+                                        <span class="fw-bold">${product.brand}</span>
+                                    </small>
+                                    <small>
+                                        <a href="#" class="text-danger" onclick="removeItem(${product.id})">Remove</a>
+                                    </small>
+                                </div>
                             </div>
                         </td>
                         <td>
                             <div class="input-group">
-                        <button class="btn btn-outline-secondary btn-quantity" onclick="updateQuantity(` + product.id + `, -1)">-</button>
-                        <input type="text" class="form-control text-center" value="` + product.quantity + `" readonly>
-                        <button class="btn btn-outline-secondary btn-quantity" onclick="updateQuantity(` + product.id + `, 1)">+</button>
-                    </div>
+                                <button class="btn btn-outline-secondary btn-quantity" onclick="updateQuantity(${product.id}, -1)">-</button>
+                                <input type="text" class="form-control text-center" value="${product.quantity}" readonly>
+                                <button class="btn btn-outline-secondary btn-quantity" onclick="updateQuantity(${product.id}, 1)">+</button>
+                            </div>
                         </td>
-                        <td>$` + itemTotal.toFixed(2) + `</td>
+                        <td>$${itemTotal.toFixed(2)}</td>
                     </tr>
                 `;
             });
-
+    
             totalAmountElement.innerHTML = `
-             <strong>Total Cost</strong>
-                <strong>$` + totalAmount.toFixed(2) + `</strong>`;
+                <strong>Total Cost</strong>
+                <strong>$${totalAmount.toFixed(2)}</strong>
+            `;
         }
-
-
+    
         function removeItem(productId) {
             let cart = JSON.parse(localStorage.getItem("cart")) || [];
             cart = cart.filter(item => item.id !== productId);
             localStorage.setItem("cart", JSON.stringify(cart));
-
-
             renderCartItems();
             updateCartCount();
         }
-
-
+    
         function updateQuantity(productId, change) {
             const cart = JSON.parse(localStorage.getItem('cart')) || [];
-        
-           
             const product = cart.find(item => item.id === productId);
-            
+    
             if (product) {
-               
-                product.quantity = Math.max(1, product.quantity + change);
-                
-               
-                localStorage.setItem('cart', JSON.stringify(cart));
-                
-               
-                renderCartItems();
+                product.quantity += change;
+    
+                if (product.quantity <= 0) {
+                    removeItem(productId);
+                } else {
+                    localStorage.setItem('cart', JSON.stringify(cart));
+                    renderCartItems();
+                    updateCartCount();
+                }
             }
         }
+    
         function updateCartCount() {
             const cart = JSON.parse(localStorage.getItem('cart')) || [];
             const itemCount = cart.reduce((total, item) => total + item.quantity, 0);
             document.querySelector('.badge').textContent = itemCount;
         }
-
-
+    
         renderCartItems();
         updateCartCount();
-
-        function updateCartItemCount() {
-            const cart = JSON.parse(localStorage.getItem('cart')) || [];
-        
-          
-            const uniqueItemCount = cart.reduce((count, item) => {
-                if (!count[item.title]) {
-                    count[item.title] = 1;
-                }
-                return count;
-            }, {});
-        
-      
-            document.getElementById('items').textContent = Object.keys(uniqueItemCount).length;
-        }
-        
-    
-        updateCartItemCount();
-        
     </script>
 </body>
 

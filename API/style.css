@@ -208,3 +208,21 @@ html {
 .rating-stars {
   color: #ffb400;
 }
+.card-body a:hover {
+  color: #ffc107 !important; 
+}
+.nav-link {
+  transition: all 0.3s ease; /* Smooth transition */
+}
+
+.nav-link:hover {
+  color: #ffc107 !important; 
+  text-decoration: none; 
+}
+#btn1:hover{
+  color: #ffc107 !important; 
+  background-color: #393535e0;
+}
+#hart:hover{
+  color: #ffc107 !important; 
+}

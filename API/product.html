@@ -6,11 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>CHANCHAN SHOP</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+    <title>CHANCHAN Shop</title>
     <link rel="icon" type="image/x-icon" href="images/favicon.ico" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
     <link href="style.css" rel="stylesheet">
     <style>
         .product-section {
@@ -40,27 +40,40 @@
 </head>
 
 <body>
-    <!-- Navigation-->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg" >
+        <div class="container d-flex justify-content-between">
+            <div>
+                <a href="#" class="text-black me-3">Seller Centre</a>
+                <a href="#" class="text-black me-3">Start Selling</a>
+                <a href="#" class="text-black me-3">Download</a>
+                <a href="#" class="text-black">Follow us on 
+                    <i class="bi bi-facebook ms-1"></i> 
+                    <i class="bi bi-instagram"></i>
+                </a>
+            </div>
+            <div>
+                <a href="#" class="text-black me-3">Notifications</a>
+                <a href="#" class="text-black me-3">Help</a>
+                <a href="#" class="text-black me-3">English</a>
+                <a href="index.html" class="text-black">Home</a> |
+                <a href="#" class="text-black ms-1">About</a>
+            </div>
+        </div>
+    </nav>
+    
+    <nav class="navbar navbar-expand-lg">
         <div class="container px-4 px-lg-5">
-            <a class="navbar-brand" href="#!">CHANCHAN SARI- SARI STORE</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
-                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="index.html">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#!">About</a></li>
-                    <li></li>
-                </ul>
-
-                <!-- Cart Button -->
-                <form class="d-flex">
+            <a class="navbar-brand text-black fw-bold" href="#!">CHANCHAN SARI- SARI STORE</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" 
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse " id="navbarSupportedContent">
+                <form class="d-flex ">
                     <a href="cart.html">
-                        <button class="btn btn-outline-dark" type="button">
-                            <i class="bi-cart-fill me-1"></i>
-                            Cart
+                        <button class="btn btn-outline-dark " type="button">
+                            <i class="bi bi-cart3"></i>
                             <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
                         </button>
                     </a>
@@ -202,26 +215,58 @@
             const res = await fetch('https://dummyjson.com/products/' + id);
             const data = await res.json();
             const category1 = data;
+            const reviewCount = category1.reviews ? category1.reviews.length : Math.floor(Math.random() * 500);
+            var rating = Math.round(category1.rating);
+            var stars = '';
 
             console.log(category1);
             document.getElementById("related").innerHTML = `${category1.category}`;
+
+            for (let i = 1; i <= 5; i++) {
+                if (i <= rating) {
+                    stars += ' <i class="bi bi-star-fill"></i>';  
+                } else {
+                    stars += ' <i class="bi bi-star"></i>'; 
+                }
+            }
             row.innerHTML = `
-       <div class="product-section d-flex flex-column flex-md-row align-items-center">
-        <div class="col-md-6 text-center">
-            <img src="` + category1.images[0] + `" alt="` + category1.title + `" style="height: 500px;" class="product-image">
+        <div class="row">
+      <!-- Product Image -->
+      <div class="col-lg-6 mb-4 mb-lg-0">
+        <img src="` + category1.images[0] + `" class="card-img-top" alt="ecommerce" style="object-fit: contain; height: 100%; width: 100%; max-height: 400px;"" alt="ecommerce">
+      </div>
+      
+      <!-- Product Details -->
+      <div class="col-lg-6">
+        <h2 class="text-muted text-uppercase">` + category1.brand +`</h2>
+        <h1 class="text-dark mb-3">` + category1.title +`</h1>
+        
+        <div class="mb-4">
+          <span class="text-warning">
+           ` + stars + `
+          </span>
+          <span class="text-muted ml-3">` + reviewCount + ` Reviews</span>
         </div>
-        <div class="col-md-6 mt-4 mt-md-0">
-            <h2 class="display-5">` + category1.title + `</h2>
-            <span class="text-decoration-line-through">$` + category1.price + `</span>
-            <p class="price">$` + category1.discountPercentage + `</p>
-            <p class="text-muted">
-               ` + category1.description + `
-            </p>
-            <button class="btn btn-dark flex-shrink-0" id="btn1" data-value="` + category1.id + `" onclick="modal(event);" data-toggle="modal" data-target="#productModal" type="button">
-                    <i class="bi-cart-fill me-1"></i>
-                    Add to cart
-                </button>
+        <div class="mb-4">
+          <a href="#" class="text-muted">
+            <i class="bi bi-facebook"></i>
+          </a>
+          <a href="#" class="ml-2 text-muted">
+            <i class="bi bi-twitter"></i>
+          </a>
+          <a href="#" class="ml-2 text-muted">
+            <i class="bi bi-whatsapp"></i>
+          </a>
         </div>
+        <p class="lead">` + category1.description + `</p>
+        <div class="d-flex align-items-center">
+          <span class="h3 mr-4">$` + category1.discountPercentage + `</span>
+          <button class="btn btn-dark mr-2" id="btn1" data-value="` + category1.id + `" onclick="modal(event);" data-toggle="modal" data-target="#productModal" type="button">Buy Now</button>
+          <button class="btn rounded-circle">
+            <i class="bi bi-heart" id="hart"></i>
+          </button>
+        </div>
+      </div>
     </div>`;
 
             fetchProducts(category1.category);
@@ -254,25 +299,31 @@
                             stars += '<span class="text-warning">&#9734;</span>';
                         }
                     }
-                    container.innerHTML += `   <div class="col-12 col-sm-12 col-md-6 col-lg-4 mb-4">
-                                <div class="product-card p-3 h-100">
-                                    <!-- Product Image with Fallback -->
-                                    <img src="` + imageUrl + `" class="card-img-top mb-3 img-fluid" style="height: 200px; background-color: ` + bgColor + `" alt="` + category2[i].title + `" 
-                                        onerror="this.onerror=null;this.src='images/default.jpg';" />
-                                    <h6 class="fw-bold">` + category2[i].title + `</h6>
-                                    <div class="d-flex align-items-center mb-2">
-                                        <span class="rating-stars">` + stars + `</span> 
-                                        <span class="ms-2 reviews">` + reviewCount + ` Reviews</span> 
+                    container.innerHTML += `  <div class="col-12 col-sm-6 col-md-4 mb-4">
+                                <div class="card border-0 shadow-sm">
+                                    <div class="position-relative">
+                                    <img src="` + imageUrl + `" class="card-img-top img-fluid" alt="Product Image" style="object-fit: contain; width: 100%; max-height: 300px;  background-color: ` + bgColor + `;">
+                                    <span class="badge bg-danger position-absolute top-0 start-0 m-2">HOT</span>
                                     </div>
-                                   <div class="location">` + category2[i].brand + ` | ` + category2[i].shippingInformation + `</div>
-                                    <div class="price mt-2">
-                                        $ ` + category2[i].discountPercentage + ` 
-                                        <span class="discount-price">$ ` + category2[i].price + `</span> 
+                                    <div class="card-body">
+                                    <p class="text-uppercase text-muted small mb-1">` + category2[i].category + `</p>
+                                    <h5 class="card-title fw-bold mb-1">Women Leather Bag</h5>
+                                    <p class="card-text text-muted small mb-2">` + category2[i].description + `</p>
+                                    <div class="d-flex align-items-center">
+                                        <span class="text-decoration-line-through text-muted me-2">$` + category2[i].price + `</span>
+                                        <span class="text-warning fw-bold">$` + category2[i].discountPercentage + `</span>
                                     </div>
-                                    <div class="sold-count mt-1">` + category2[i].stock + ` sold</div>
-                                    <a href="product.html?id=` + category2[i].id + `" class="btn btn-dark mt-auto">Quick View</a>
+                                   <div class="d-flex justify-content-between align-items-center mt-3">
+                                         <div class="star-rating">
+                                        ${stars}
+                                    </div>
+                                    <div class="d-flex justify-content-end mt-3">
+                                        <a href="#" class="text-muted me-3"><i class="bi bi-heart"></i></a>
+                                        <a href="product.html?id=` + category2[i].id + `"class="text-muted"><i class="bi bi-cart"></i></a>
+                                    </div>
+                                    </div>
                                 </div>
-                            </div>`;
+                                </div>`;
                 }
             } catch (error) {
                 console.error('Error fetching data:', error);
