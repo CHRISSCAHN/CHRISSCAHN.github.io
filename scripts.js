@@ -1,7 +1,7 @@
 const captions = [
      {
         zoom: "images/Italy.jpg",
-        link: "https://chrisscahn.github.io/CHRISSCAHN/SAM/",
+        link: "./SAM/index.html",
         image: "images/Italy.jpg",
         type: "filter-web",
         title: "Italy"
@@ -29,7 +29,7 @@ const captions = [
     },
     {
         zoom: "images/shop.jpg",
-        link: "https://chrisscahn.github.io/CHRISSCAHN/API/",
+        link: "./API/index.html",
         image: "images/shop.jpg",
         type: "filter-web",
         title: "CHANCHAN Shop"
