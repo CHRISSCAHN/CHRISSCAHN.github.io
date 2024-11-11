@@ -16,34 +16,7 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg">
-        <div class="container d-flex justify-content-between">
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#firstNavbar"
-                aria-controls="firstNavbar" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="collapse navbar-collapse" id="firstNavbar">
-                <div class="d-flex flex-column flex-lg-row">
-                    <a href="#" class="text-black me-3">Seller Centre</a>
-                    <a href="#" class="text-black me-3">Start Selling</a>
-                    <a href="#" class="text-black me-3">Download</a>
-                    <a href="#" class="text-black">Follow us on
-                        <i class="bi bi-facebook ms-1"></i>
-                        <i class="bi bi-instagram"></i>
-                    </a>
-                </div>
-                <div class="ms-auto">
-                    <a href="#" class="text-black me-3">Notifications</a>
-                    <a href="#" class="text-black me-3">Help</a>
-                    <a href="#" class="text-black me-3">English</a>
-                    <a href="index.html" class="text-black">Home</a> |
-                    <a href="#" class="text-black ms-1">About</a>
-                </div>
-            </div>
-        </div>
-    </nav>
-    <nav class="navbar navbar-expand-lg">
+    <nav class="navbar navbar-expand-lg my-4">
         <div class="container px-4 px-lg-5">
             <a class="navbar-brand text-black fw-bold" href="#!">CHANCHAN SARI- SARI STORE</a>
             <div class="d-flex w-100 align-items-center">
@@ -60,11 +33,12 @@
             </div>
         </div>
     </nav>
-
+   
+    
     <div class="container-fluid py-2">
         <div class="d-flex justify-content-center">
-            <ul class="nav bottom-links">
-                <li class="nav-item"><a class="nav-link text-black" href="#" onclick="fetchProducts();"
+            <ul class="nav bottom-links" id="categoryNav">
+                <li class="nav-item"><a class="nav-link active text-black" href="#" onclick="fetchProducts();"
                         data-value="all">All Products</a></li>
                 <li class="nav-item"><a class="nav-link text-black" href="#" onclick="change(event);"
                         data-value="smartphones">Tech Gadgets</a></li>
@@ -94,7 +68,7 @@
         <div class="container px-4 px-lg-5 mt-5">
             <h2 class="fw-bolder mb-4" id="related" style="text-transform: capitalize;">Related products</h2>
 
-            <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center" id="con1">
+            <div class="row  gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center" id="con1">
 
 
             </div>
@@ -262,6 +236,13 @@
                 return;
             }
 
+            document.querySelectorAll('#categoryNav .nav-link').forEach(link => {
+                link.classList.remove('active');
+            });
+    
+            
+            event.target.classList.add('active');
+
             var drop = event.target.getAttribute('data-value');
             let category;
 
@@ -324,7 +305,6 @@
                 console.error('Error fetching products:', error);
             }
         }
-
         async function fetchProducts() {
             let products;
 
@@ -387,11 +367,12 @@
         function shuffleArray(array) {
             for (let i = array.length - 1; i > 0; i--) {
                 const j = Math.floor(Math.random() * (i + 1));
-                [array[i], array[j]] = [array[j], array[i]]; // Swap elements
+                [array[i], array[j]] = [array[j], array[i]]; 
             }
             return array;
         }
         fetchProducts();
+        
         function updateCartCount() {
             const cart = JSON.parse(localStorage.getItem('cart')) || [];
             const itemCount = cart.reduce((total, item) => total + item.quantity, 0);

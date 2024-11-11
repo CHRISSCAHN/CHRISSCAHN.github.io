@@ -221,8 +221,14 @@ html {
 }
 #btn1:hover{
   color: #ffc107 !important; 
-  background-color: #393535e0;
+  
 }
 #hart:hover{
   color: #ffc107 !important; 
+}
+.text-black:hover{
+  color: #ffc107 !important; 
+}
+.nav-link.active, .breadcrumb-item.active, #br {
+  color: #ffc107 !important;
 }
