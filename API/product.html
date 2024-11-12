@@ -19,20 +19,24 @@
             border-radius: 15px;
             position: relative;
         }
+
         .product-image {
             max-width: 100%;
             border-radius: 15px;
         }
+
         .price {
             font-size: 2rem;
             font-weight: bold;
         }
+
         .btn-custom {
             font-size: 1rem;
             padding: 0.5rem 1.5rem;
             display: inline-flex;
             align-items: center;
         }
+
         .btn-custom i {
             margin-left: 5px;
         }
@@ -43,11 +47,12 @@
     <nav class="navbar navbar-expand-lg">
         <div class="container px-4 px-lg-5">
             <a class="navbar-brand text-black fw-bold" href="#!">CHANCHAN SARI- SARI STORE</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" 
-                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            
+
             <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
                 <form class="d-flex ">
                     <a href="cart.html">
@@ -62,10 +67,12 @@
     </nav>
     <nav aria-label="breadcrumb" class="mx-3">
         <ol class="breadcrumb ">
-          <li class="breadcrumb-item"><a href="index.html" style="text-decoration: none;" class="text-dark">Home</a></li>
-          <li class="breadcrumb-item active" aria-current="page" style="text-decoration: none;cursor:pointer;">View</li>
+            <li class="breadcrumb-item"><a href="index.html" style="text-decoration: none;" class="text-dark">Home</a>
+            </li>
+            <li class="breadcrumb-item active" aria-current="page" style="text-decoration: none;cursor:pointer;">View
+            </li>
         </ol>
-      </nav>
+    </nav>
     <!-- Product section-->
     <section class="py-5">
         <div class="container-fluid px-4 px-lg-5 ">
@@ -75,8 +82,8 @@
         </div>
     </section>
     <!-- Related items section-->
-    <section class="py-5 bg-light">
-        <div class="container px-4 px-lg-5 mt-5">
+    <section class="py-2 bg-light">
+        <div class="container px-4 px-lg-5 mt-2">
             <h2 class="fw-bolder mb-4" id="related" style="text-transform: capitalize;">Related products</h2>
             <div class="row gx-4 gx-lg-5 row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 justify-content-center"
                 id="rel">
@@ -209,9 +216,9 @@
 
             for (let i = 1; i <= 5; i++) {
                 if (i <= rating) {
-                    stars += ' <i class="bi bi-star-fill"></i>';  
+                    stars += ' <i class="bi bi-star-fill"></i>';
                 } else {
-                    stars += ' <i class="bi bi-star"></i>'; 
+                    stars += ' <i class="bi bi-star"></i>';
                 }
             }
             row.innerHTML = `
@@ -223,8 +230,8 @@
       
       <!-- Product Details -->
       <div class="col-lg-6">
-        <h2 class="text-muted text-uppercase">` + category1.brand +`</h2>
-        <h1 class="text-dark mb-3">` + category1.title +`</h1>
+        <h2 class="text-muted text-uppercase">` + category1.brand + `</h2>
+        <h1 class="text-dark mb-3">` + category1.title + `</h1>
         
         <div class="mb-4">
           <span class="text-warning">
@@ -245,7 +252,7 @@
         </div>
         <p class="lead">` + category1.description + `</p>
         <div class="d-flex align-items-center">
-          <span class="h3 mr-4">$` + category1.discountPercentage + `</span>
+          <span class="h3 mr-4">$` + (category1.price * (1 - category1.discountPercentage / 100)).toFixed(2) + `</span>
           <button class="btn btn-dark mx-3" id="btn1" data-value="` + category1.id + `" onclick="modal(event);" data-toggle="modal" data-target="#productModal" type="button">Buy Now</button>
           <button class="btn rounded-circle">
             <i class="bi bi-heart" id="hart"></i>
@@ -284,31 +291,34 @@
                             stars += '<span class="text-warning">&#9734;</span>';
                         }
                     }
-                    container.innerHTML += `  <div class="col-12 col-sm-6 col-md-4 mb-4">
-                                <div class="card border-0 shadow-sm">
-                                    <div class="position-relative">
-                                    <img src="` + imageUrl + `" class="card-img-top img-fluid" alt="Product Image" style="object-fit: contain; width: 100%; max-height: 300px;  background-color: ` + bgColor + `;">
-                                    <span class="badge bg-danger position-absolute top-0 start-0 m-2">HOT</span>
-                                    </div>
-                                    <div class="card-body">
+                    container.innerHTML += ` <div class="col-12 col-sm-6 col-md-4 mb-4">
+                                <div class="card border-0 position-relative product-card">
+                                    <div class="position-relative overflow-hidden">
+                                    <img src="` + imageUrl + `" class="card-img-top img-fluid" alt="Product Image" style="object-fit: contain; width: 100%; max-height: 300px; background-color: ` + bgColor + `;">
+                                    <span class="badge bg-danger position-absolute top-0 start-0 m-2">
+                                        ` + Math.round(category2[i].discountPercentage) + `% off
+                                    </span>
+                                </div>
+                                <div class="card-body">
                                     <p class="text-uppercase text-muted small mb-1">` + category2[i].category + `</p>
-                                    <h5 class="card-title fw-bold mb-1">Women Leather Bag</h5>
-                                    <p class="card-text text-muted small mb-2">` + category2[i].description + `</p>
+                                    <h5 class="card-title fw-bold mb-1">` + category2[i].title + `</h5>
                                     <div class="d-flex align-items-center">
                                         <span class="text-decoration-line-through text-muted me-2">$` + category2[i].price + `</span>
-                                        <span class="text-warning fw-bold">$` + category2[i].discountPercentage + `</span>
+                                        <span class="text-warning fw-bold">$` + (category2[i].price * (1 - category2[i].discountPercentage / 100)).toFixed(2) + `</span>
                                     </div>
-                                   <div class="d-flex justify-content-between align-items-center mt-3">
-                                         <div class="star-rating">
-                                        ${stars}
-                                    </div>
-                                    <div class="d-flex justify-content-end mt-3">
-                                        <a href="#" class="text-muted me-3"><i class="bi bi-heart"></i></a>
-                                        <a href="product.html?id=` + category2[i].id + `"class="text-muted"><i class="bi bi-cart"></i></a>
-                                    </div>
+                                    <div class="d-flex justify-content-between align-items-center mt-3">
+                                        <div class="star-rating">
+                                            ` + stars + `
+                                        </div>
+                                        <div class="d-flex justify-content-end mt-3">
+                                            <a href="#" class="text-muted me-3"><i class="bi bi-heart"></i></a>
+                                            <a href="product.html?id=` + category2[i].id + `" class="text-muted"><i class="bi bi-cart"></i></a>
+                                        </div>
                                     </div>
                                 </div>
-                                </div>`;
+                            </div>
+                        </div>
+                        `;
                 }
             } catch (error) {
                 console.error('Error fetching data:', error);
@@ -337,43 +347,61 @@
                 const imageUrl = product.images.length > 0 ? product.images[0] : 'images/default.jpg';
 
                 container.innerHTML += `
-                    <div class="modal-header">
-                        <input type="hidden" id="hidden" value="` + product.id + `">
-                        <h5 class="modal-title" id="productModalLabel">` + product.title + `</h5>
-                        <button type="button" class="close text-dark" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <img src="` + imageUrl + `" onerror="this.onerror=null;this.src='images/default.jpg';" class="img-fluid mb-3" alt="Product Image" style="object-fit: contain; max-height: 300px; width: 100%;">
-                            </div>
-                            <div class="col-md-6">
-                                <p class="h4">$` + product.discountPercentage + `</p>
-                                <p>` + product.description + `</p>
-                                <p><strong>Dimensions:</strong></p>
-                        <ul>
-                            <li>Width: ` + product.dimensions.width + ` cm</li>
-                            <li>Height: ` + product.dimensions.height + ` cm</li>
-                            <li>Depth: ` + product.dimensions.depth + ` cm</li>
-                        </ul>
-                                <div class="form-group">
-                                    <label for="colorSelect">Color</label>
-                                    <select id="colorSelect" class="form-control">
-                                        <option>Choose an option</option>
-                                        <option>Black</option>
-                                        <option>Blue</option>
-                                        <option>White</option>
-                                    </select>
-                                </div>
-                                <div class="form-group d-flex align-items-center">
-                                    <input type="number" class="form-control w-25 me-2" value="1" min="1" id="productQuantity">
-                                    <button class="btn btn-dark flex-shrink-0" id="addMo" data-dismiss="modal" data-value="` + product.id + `" onclick="addToCart(` + product.id + `);">Add to Cart</button>
-                                </div>
-                            </div>
+                  <div class="modal-header">
+                            <input type="hidden" id="hidden" value="` + product.id + `">
+                            <h5 class="modal-title" id="productModalLabel">` + product.title + `</h5>
+                            <button type="button" class="close text-dark" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
                         </div>
-                    </div>`;
+                        <div class="modal-body">
+                            <div class="row">
+                                <!-- Image Section -->
+                                <div class="col-md-6">
+                                    <img src="` + imageUrl + `" onerror="this.onerror=null;this.src='images/default.jpg';" class="img-fluid mb-3" alt="Product Image" style="object-fit: contain; max-height: 300px; width: 100%;">
+                                    <div class="d-flex mt-2">
+                                        <!-- Loop through product images for thumbnails -->
+                                        ` + (function () {
+                                                let thumbnails = '';
+                                                for (let j = 0; j < product.images.length && j < 5; j++) {
+                                                    thumbnails += `<img src="${product.images[j]}" class="img-thumbnail me-2" style="width: 60px; height: 60px; object-fit: cover;" alt="Thumbnail ${j + 1}">`;
+                                                }
+                                                return thumbnails;
+                                            })() + `
+                                    </div>
+                                </div>
+                                
+                                <!-- Details Section -->
+                                <div class="col-md-6">
+                                    <p class="h4 text-danger">$` + (product.price * (1 - product.discountPercentage / 100)).toFixed(2) + ` <span class="text-muted text-decoration-line-through">$` + product.price + `</span></p>
+                                    <p class="small text-muted">Stocks: ` + product.stock + `</p>
+                                    <p class="mt-3">` + product.description + `</p>
+                                    
+                                    <p><strong>Dimensions:</strong></p>
+                                    <ul>
+                                        <li>Width: ` + product.dimensions.width + ` cm</li>
+                                        <li>Height: ` + product.dimensions.height + ` cm</li>
+                                        <li>Depth: ` + product.dimensions.depth + ` cm</li>
+                                    </ul>
+                                    
+                                    <div class="form-group">
+                                        <label for="colorSelect"><strong>Color</strong></label>
+                                        <select id="colorSelect" class="form-control">
+                                            <option>Choose an option</option>
+                                            <option>Black</option>
+                                            <option>Blue</option>
+                                            <option>White</option>
+                                        </select>
+                                    </div>
+                                    
+                                    <div class="form-group d-flex align-items-center mt-2">
+                                        <input type="number" class="form-control w-25 me-2" value="1" min="1" id="productQuantity">
+                                        <button class="btn btn-danger flex-shrink-0" id="addMo" data-dismiss="modal" data-value="` + product.id + `" onclick="addToCart(` + product.id + `);">Add to Cart</button>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>`;
             } catch (error) {
                 console.error('Error fetching product data:', error);
             }
@@ -381,51 +409,51 @@
 
         function addToCart(productId) {
             const quantityInput = document.getElementById('productQuantity');
-            const quantity = parseInt(quantityInput.value) || 1;  
-        
-        
+            const quantity = parseInt(quantityInput.value) || 1;
+
+
             if (quantity <= 0) {
                 alert('Please select a valid quantity.');
                 return;
             }
-        
+
             const cart = JSON.parse(localStorage.getItem('cart')) || [];
-        
+
             // kunin sa dummyjson
             fetch(`https://dummyjson.com/products/${productId}`)
                 .then(res => res.json())
                 .then(product => {
                     const existingItemIndex = cart.findIndex(item => item.id === product.id);
                     if (existingItemIndex > -1) {
-                       
+
                         cart[existingItemIndex].quantity += quantity;
                     } else {
-                        
+
                         cart.push({
                             ...product,
                             quantity: quantity
                         });
                     }
-        
-                   
+
+
                     localStorage.setItem('cart', JSON.stringify(cart));
-        
-                  
+
+
                     updateCartCount();
-        
-                    
+
+
                     alert(`${product.title} added to cart with quantity: ${quantity}`);
                 })
                 .catch(error => console.error("Error fetching product data:", error));
         }
-        
-       
+
+
         function updateCartCount() {
             const cart = JSON.parse(localStorage.getItem('cart')) || [];
             const itemCount = cart.reduce((total, item) => total + item.quantity, 0);
             document.querySelector('.badge').textContent = itemCount;
         }
-       
+
         updateCartCount();
         function loadData() {
             const url = new URLSearchParams(window.location.search);
@@ -438,7 +466,7 @@
 
         loadData();
         // para scroll to top
-        
+
         window.history.scrollRestoration = 'manual';
     </script>
 </body>

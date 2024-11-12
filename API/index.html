@@ -21,7 +21,8 @@
             <a class="navbar-brand text-black fw-bold" href="#!">CHANCHAN SARI- SARI STORE</a>
             <div class="d-flex w-100 align-items-center">
                 <form class="d-flex me-2 position-relative w-100" role="search" id="searchForm">
-                    <input class="form-control w-100" type="search" id="search" placeholder="Search" aria-label="Search" oninput="getProd()">
+                    <input class="form-control w-100" type="search" id="search" placeholder="Search" aria-label="Search"
+                        oninput="getProd()">
                     <div id="suggestions" class="dropdown-menu" style="display: none;"></div>
                 </form>
                 <a href="cart.html">
@@ -33,8 +34,8 @@
             </div>
         </div>
     </nav>
-   
-    
+
+
     <div class="container-fluid py-2">
         <div class="d-flex justify-content-center">
             <ul class="nav bottom-links" id="categoryNav">
@@ -64,8 +65,8 @@
     <!-- Header-->
 
     <!-- Section-->
-    <section class="py-5">
-        <div class="container px-4 px-lg-5 mt-5">
+    <section class="">
+        <div class="container px-4 px-lg-5 mt-2">
             <h2 class="fw-bolder mb-4" id="related" style="text-transform: capitalize;">Related products</h2>
 
             <div class="row  gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center" id="con1">
@@ -165,7 +166,7 @@
             "womens-watches": "#FFFACD"
         };
 
-
+        //taenang search
         const getProd = async () => {
             var search = document.getElementById("search").value;
 
@@ -193,32 +194,35 @@
                         }
                         document.getElementById("related").innerHTML = `${data.products[i].category}`;
                         container.innerHTML += `
-                             <div class="col-12 col-sm-6 col-md-4 mb-4">
-                                <div class="card border-0 shadow-sm">
-                                    <div class="position-relative">
+                            <div class="col-12 col-sm-6 col-md-4 mb-4">
+                                <div class="card border-0 position-relative product-card">
+                                    <div class="position-relative overflow-hidden">
                                     <img src="` + imageUrl + `" class="card-img-top img-fluid" alt="Product Image" style="object-fit: contain; width: 100%; max-height: 300px;background-color: ` + bgColor + `;">
-                                    <span class="badge bg-danger position-absolute top-0 start-0 m-2">HOT</span>
+                                   <span class="badge bg-danger position-absolute top-0 start-0 m-2">
+                                        ` + Math.round(data.products[i].discountPercentage) + `% off
+                                    </span>
                                     </div>
                                     <div class="card-body">
                                     <p class="text-uppercase text-muted small mb-1">` + data.products[i].category + `</p>
                                     <h5 class="card-title fw-bold mb-1">` + data.products[i].title + `</h5>
-                                    <p class="card-text text-muted small mb-2">` + data.products[i].description + `</p>
+                                  
                                     <div class="d-flex align-items-center">
                                         <span class="text-decoration-line-through text-muted me-2">$` + data.products[i].price + `</span>
-                                        <span class="text-warning fw-bold">$` + data.products[i].discountPercentage + `</span>
+                                        <span class="text-warning fw-bold">$` + (data.products[i].price * (1 - data.products[i].discountPercentage / 100)).toFixed(2) + `</span>
                                     </div>
-                                    <div class="d-flex justify-content-between align-items-center mt-3">
+                                    <div class="d-flex justify-content-between align-items-center mt-1">
                                          <div class="star-rating">
                                         ${stars}
                                     </div>
-                                    <div class="d-flex justify-content-end mt-3">
+                                    <div class="d-flex justify-content-end mt-1">
                                         <a href="#" class="text-muted me-3"><i class="bi bi-heart"></i></a>
                                         <a href="product.html?id=` + data.products[i].id + `"class="text-muted"><i class="bi bi-cart"></i></a>
                                     </div>
                                 </div>
                                     </div>
                                 </div>
-                                </div>`;
+                                </div>
+                            </div>`;
                     }
                 } else {
                     container.innerHTML = "<p>No search results found</p>";
@@ -229,7 +233,7 @@
             }
         };
 
-
+            // eto ung sa navbar
         async function change(event) {
             if (!event || !event.target) {
                 console.error('Event or target not available');
@@ -239,8 +243,8 @@
             document.querySelectorAll('#categoryNav .nav-link').forEach(link => {
                 link.classList.remove('active');
             });
-    
-            
+
+
             event.target.classList.add('active');
 
             var drop = event.target.getAttribute('data-value');
@@ -275,36 +279,41 @@
                         }
                     }
                     container.innerHTML += `
-                             <div class="col-12 col-sm-6 col-md-4 mb-4">
-                                <div class="card border-0 shadow-sm">
-                                    <div class="position-relative">
+                            <div class="col-12 col-sm-6 col-md-4 mb-4">
+                                <div class="card border-0 position-relative product-card">
+                                    <div class="position-relative overflow-hidden">
                                     <img src="` + imageUrl + `" class="card-img-top img-fluid" alt="Product Image" style="object-fit: contain; width: 100%; max-height: 300px;  background-color: ` + bgColor + `;">
-                                    <span class="badge bg-danger position-absolute top-0 start-0 m-2">HOT</span>
+                                  <span class="badge bg-danger position-absolute top-0 start-0 m-2">
+                                        ` + Math.round(category[i].discountPercentage) + `% off
+                                    </span>
                                     </div>
                                     <div class="card-body">
                                     <p class="text-uppercase text-muted small mb-1">` + category[i].category + `</p>
                                     <h5 class="card-title fw-bold mb-1">` + category[i].title + `</h5>
-                                    <p class="card-text text-muted small mb-2">` + category[i].description + `</p>
+                                
                                     <div class="d-flex align-items-center">
                                         <span class="text-decoration-line-through text-muted me-2">$` + category[i].price + `</span>
-                                        <span class="text-warning fw-bold">$` + category[i].discountPercentage + `</span>
+                                       <span class="text-warning fw-bold">$` + (category[i].price * (1 - category[i].discountPercentage / 100)).toFixed(2) + `</span>
                                     </div>
-                                   <div class="d-flex justify-content-between align-items-center mt-3">
+                                   <div class="d-flex justify-content-between align-items-center mt-1">
                                          <div class="star-rating">
                                         ${stars}
                                     </div>
-                                    <div class="d-flex justify-content-end mt-3">
+                                    <div class="d-flex justify-content-end mt-1">
                                         <a href="#" class="text-muted me-3"><i class="bi bi-heart"></i></a>
                                         <a href="product.html?id=` + category[i].id + `"class="text-muted"><i class="bi bi-cart"></i></a>
                                     </div>
                                     </div>
                                 </div>
-                                </div>`;
+                                </div>
+                            </div>`;
                 }
             } catch (error) {
                 console.error('Error fetching products:', error);
             }
         }
+        // pagkuha ng mga items 
+
         async function fetchProducts() {
             let products;
 
@@ -333,30 +342,33 @@
                     document.getElementById("related").innerHTML = `Products`;
                     container.innerHTML += `
                             <div class="col-12 col-sm-6 col-md-4 mb-4">
-                                <div class="card border-0 shadow-sm">
-                                    <div class="position-relative">
+                                <div class="card border-0 position-relative product-card">
+                                    <div class="position-relative overflow-hidden">
                                     <img src="` + imageUrl + `" class="card-img-top img-fluid" alt="Product Image" style="object-fit: contain; width: 100%; max-height: 300px; background-color: ` + bgColor + `;">
-                                    <span class="badge bg-danger position-absolute top-0 start-0 m-2">HOT</span>
+                                    <span class="badge bg-danger position-absolute top-0 start-0 m-2">
+                                        ` + Math.round(products[i].discountPercentage) + `% off
+                                    </span>
                                     </div>
                                     <div class="card-body">
                                     <p class="text-uppercase text-muted small mb-1">` + products[i].category + `</p>
                                     <h5 class="card-title fw-bold mb-1">` + products[i].title + `</h5>
-                                    <p class="card-text text-muted small mb-2">` + products[i].description + `</p>
+                                    
                                     <div class="d-flex align-items-center">
                                         <span class="text-decoration-line-through text-muted me-2">$` + products[i].price + `</span>
-                                        <span class="text-warning fw-bold">$` + products[i].discountPercentage + `</span>
+                                       <span class="text-warning fw-bold">$` + (products[i].price * (1 - products[i].discountPercentage / 100)).toFixed(2) + `</span>
                                     </div>
-                                   <div class="d-flex justify-content-between align-items-center mt-3">
+                                   <div class="d-flex justify-content-between align-items-center mt-1">
                                          <div class="star-rating">
                                         ${stars}
                                     </div>
-                                    <div class="d-flex justify-content-end mt-3">
+                                    <div class="d-flex justify-content-end mt-1">
                                         <a href="#" class="text-muted me-3"><i class="bi bi-heart"></i></a>
                                         <a href="product.html?id=` + products[i].id + `"class="text-muted"><i class="bi bi-cart"></i></a>
                                     </div>
                                     </div>
                                 </div>
-                                </div>`;
+                                </div>
+                            </div>`;
                 }
             } catch (error) {
                 console.error('Error fetching data:', error);
@@ -367,12 +379,12 @@
         function shuffleArray(array) {
             for (let i = array.length - 1; i > 0; i--) {
                 const j = Math.floor(Math.random() * (i + 1));
-                [array[i], array[j]] = [array[j], array[i]]; 
+                [array[i], array[j]] = [array[j], array[i]];
             }
             return array;
         }
         fetchProducts();
-        
+
         function updateCartCount() {
             const cart = JSON.parse(localStorage.getItem('cart')) || [];
             const itemCount = cart.reduce((total, item) => total + item.quantity, 0);

@@ -232,3 +232,37 @@ html {
 .nav-link.active, .breadcrumb-item.active, #br {
   color: #ffc107 !important;
 }
+.card {
+  transition: box-shadow 0.3s ease-in-out; 
+  cursor: pointer;
+}
+
+.card:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), 0 6px 20px rgba(0, 0, 0, 0.19); 
+}
+.modal-body {
+  font-size: 0.9rem;
+}
+
+.modal-body .text-danger {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.modal-body .text-muted {
+  font-size: 0.85rem;
+}
+
+.modal-body .form-group label {
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.modal-body .btn {
+  font-size: 0.9rem;
+  padding: 8px 20px;
+}
+
+.img-thumbnail {
+  object-fit: cover;
+}
