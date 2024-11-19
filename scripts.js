@@ -55,6 +55,13 @@ const captions = [
         type: "filter-app",
         title: "Ricecue"
     },
+    {
+        zoom: "images/ytt.png",
+        link: "./Embedd/index.html",
+        image: "images/ytt.png",
+        type: "filter-web",
+        title: "YouTube Clone"
+    },
 ];
 
 var row = document.getElementById("row");
