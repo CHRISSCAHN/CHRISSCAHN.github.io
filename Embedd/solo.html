@@ -52,62 +52,28 @@
             </div>
         </div>
     </nav>
-
     <div class="container-fluid">
-        <div class="row">
-            <nav class="col-lg-2 col-md-3 d-md-block bg-light sidebar collapse show" id="sidebarMenu">
-                <div class="position-sticky pt-2">
-                    <ul class="nav flex-column">
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="index.html" style="color: black;">
-                                <i class="bi bi-house-door" style="color: black;"></i> Home
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#" style="color: black;">
-                                <i class="bi bi-play-btn" style="color: black;"></i> Subscriptions
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#" style="color: black;">
-                                <i class="bi bi-clock-history" style="color: black;"></i> History
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#" style="color: black;">
-                                <i class="bi bi-heart" style="color: black;"></i> Liked Videos
-                            </a>
-                        </li>
-                    </ul>
+
+        <div class="row mt-3 p-4" >
+            <div class="col-lg-8">
+                <div class="card">
+                  <div class="card-body p-0" id="row">
+
+                  </div>
                 </div>
-            </nav>
+              </div>
 
-
-            <main class="col-lg-10 col-md-9 ms-sm-auto px-md-4">
-                <div class="row mt-3" id="videoContainer">
-                    <!-- cong -->
-
+            <div class="col-lg-4 p-3">
+                <h6>Recmmended for you</h6>
+                <div class="list-group" style="overflow-y: auto; max-height: 500px;" id="hmm">
 
                 </div>
-            </main>
+            </div>
         </div>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        function filterVideos() {
-            const searchInput = document.getElementById('searchBar').value.toLowerCase();
-            const videoCards = document.querySelectorAll('.video-card');
-
-            videoCards.forEach(card => {
-                const title = card.getAttribute('data-title').toLowerCase();
-                if (title.includes(searchInput)) {
-                    card.classList.remove('hidden');
-                } else {
-                    card.classList.add('hidden');
-                }
-            });
-        }
-
         const captions = [
             {
                 iframe: '<iframe width="100%" height="100%" src="https://www.youtube.com/embed/FX5CYFCqmPk?si=_fQrBa9xUpXe4Cz0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>',
@@ -174,36 +140,105 @@
             },
         ];
 
-        var row = document.getElementById("videoContainer");
 
-        for (let i = 0; i < captions.length; i++) {
-            row.innerHTML += ` 
-            <!-- ` + captions[i].kanino + `-->
-             <div class="col-md-4 col-sm-6 mb-4 video-card" data-title="` + captions[i].data + `">
-                <a href="solo.html?iframe=` + encodeURIComponent(captions[i].iframe) + `&title=` + encodeURIComponent(captions[i].title) + `&text=` + encodeURIComponent(captions[i].text) + `" class="text-muted text-decoration-none">
-                <div class="card" style="border: none; position: relative;">
-                    <div class="card-img-top" style="height: 200px; overflow: hidden; border-radius: 20px; position: relative;">
-                        ` + captions[i].iframe + `
-                        <a href="solo.html?iframe=` + encodeURIComponent(captions[i].iframe) + `&title=` + encodeURIComponent(captions[i].title) + `&text=` + encodeURIComponent(captions[i].text) + `" 
-                           class="stretched-link" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 2;"></a>
+
+        const getID = async (iframe, title, text) => {
+            const row = document.getElementById("row");
+        
+            const parser = new DOMParser();
+            const doc = parser.parseFromString(iframe, 'text/html');
+            const iframeElement = doc.querySelector('iframe');
+            let src = iframeElement.getAttribute('src');
+        
+            const url = new URL(src);
+            url.searchParams.set('autoplay', '1');
+            src = url.toString();
+        
+            const updatedIframe = `<iframe width="100%" height="100%" src="${src}" title="${iframeElement.getAttribute('title')}" frameborder="0" allow="${iframeElement.getAttribute('allow')}" referrerpolicy="${iframeElement.getAttribute('referrerpolicy')}" allowfullscreen></iframe>`;
+            row.innerHTML = `
+                <div class="ratio ratio-16x9">
+                  ` + updatedIframe + `
+                </div>
+                <div class="p-3">
+                  <h5>` + title + `</h5>
+                  <p class="text-muted mb-0">` + text + `</p>
+                </div>`;
+        };
+        
+
+        document.addEventListener("DOMContentLoaded", function () {
+            function fetchPlaylist() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const current = urlParams.get("iframe");
+
+            const col = document.getElementById("hmm");
+
+            captions1 = shuffleArray(captions);
+
+            for (var i = 0; i < captions.length; i++) {
+                if (captions[i].iframe !== current) {
+
+                    col.innerHTML += `
+              <a href="solo.html?iframe=` + encodeURIComponent(captions1[i].iframe) + `&title=` + encodeURIComponent(captions1[i].title) + `&text=` + encodeURIComponent(captions1[i].text) + `" class="list-group-item list-group-item-action video-card" data-title="` + captions[i].data + `">
+                <div class="d-flex ">
+                    <div class="ratio ratio-16x9 me-3" style="width: 150px; flex-shrink: 0; cursor: pointer;">
+                        <div class="iframe-container" style="pointer-events: none;">
+                            ` + captions1[i].iframe + `
+                        </div>
                     </div>
-                    <div class="card-body">
-                        <h5 class="card-title">` + captions[i].title + `</h5>
-                        <p class="card-text">` + captions[i].text + `</p>
+                    <div>
+                        <h6 class="mb-1">` + captions1[i].title + `</h6>
+                        <p class="text-muted mb-0">` + captions1[i].text + `</p>
                     </div>
                 </div>
             </a>
-            </div>
-            `;
-        }
-        
+                `;
+                };
 
-        window.history.scrollRestoration = 'manual';
-        document.addEventListener('DOMContentLoaded', function () {
-          window.scrollTo(0, 0);
+            };
+        };
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+            return array;
+        }
+        fetchPlaylist();
+    });
+    
+    function filterVideos() {
+        const searchInput = document.getElementById('searchBar').value.toLowerCase();
+        const videoCards = document.querySelectorAll('.video-card');
+
+        videoCards.forEach(card => {
+            const title = card.getAttribute('data-title').toLowerCase();
+            if (title.includes(searchInput)) {
+                card.classList.remove('hidden');
+            } else {
+                card.classList.add('hidden');
+            }
         });
+    }
+
+        
+        function loadData() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const iframe = urlParams.get("iframe");
+            const title = urlParams.get("title");
+            const text = urlParams.get("text");
+
+            if (iframe && title && text) {
+                getID(iframe, title, text);
+            } else {
+                const row = document.getElementById("row");
+                row.innerHTML = 'No data available.';
+            }
+        }
+
+        loadData();
+        
     </script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>
