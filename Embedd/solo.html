@@ -54,14 +54,14 @@
     </nav>
     <div class="container-fluid">
 
-        <div class="row mt-3 p-4" >
+        <div class="row mt-3 p-4">
             <div class="col-lg-8">
                 <div class="card">
-                  <div class="card-body p-0" id="row">
+                    <div class="card-body p-0" id="row">
 
-                  </div>
+                    </div>
                 </div>
-              </div>
+            </div>
 
             <div class="col-lg-4 p-3">
                 <h6>Recmmended for you</h6>
@@ -144,41 +144,61 @@
 
         const getID = async (iframe, title, text) => {
             const row = document.getElementById("row");
-        
+
+
             const parser = new DOMParser();
             const doc = parser.parseFromString(iframe, 'text/html');
             const iframeElement = doc.querySelector('iframe');
+
+            if (!iframeElement) {
+                console.error("Invalid iframe element.");
+                return;
+            }
+
             let src = iframeElement.getAttribute('src');
-        
-            const url = new URL(src);
+
+            const url = new URL(src, window.location.origin);
             url.searchParams.set('autoplay', '1');
             src = url.toString();
-        
-            const updatedIframe = `<iframe width="100%" height="100%" src="${src}" title="${iframeElement.getAttribute('title')}" frameborder="0" allow="${iframeElement.getAttribute('allow')}" referrerpolicy="${iframeElement.getAttribute('referrerpolicy')}" allowfullscreen></iframe>`;
+
+            const updatedIframe = `
+                <iframe 
+                    width="100%" 
+                    height="100%" 
+                    src="${src}" 
+                    title="${iframeElement.getAttribute('title')}" 
+                    frameborder="0" 
+                    allow="${iframeElement.getAttribute('allow') || 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'}" 
+                    referrerpolicy="${iframeElement.getAttribute('referrerpolicy') || 'strict-origin-when-cross-origin'}" 
+                    allowfullscreen
+                ></iframe>`;
+
+
             row.innerHTML = `
                 <div class="ratio ratio-16x9">
-                  ` + updatedIframe + `
+                    ${updatedIframe}
                 </div>
                 <div class="p-3">
-                  <h5>` + title + `</h5>
-                  <p class="text-muted mb-0">` + text + `</p>
+                    <h5>${title}</h5>
+                    <p class="text-muted mb-0">${text}</p>
                 </div>`;
         };
-        
+
+
 
         document.addEventListener("DOMContentLoaded", function () {
             function fetchPlaylist() {
-            const urlParams = new URLSearchParams(window.location.search);
-            const current = urlParams.get("iframe");
+                const urlParams = new URLSearchParams(window.location.search);
+                const current = urlParams.get("iframe");
 
-            const col = document.getElementById("hmm");
+                const col = document.getElementById("hmm");
 
-            captions1 = shuffleArray(captions);
+                captions1 = shuffleArray(captions);
 
-            for (var i = 0; i < captions.length; i++) {
-                if (captions[i].iframe !== current) {
+                for (var i = 0; i < captions.length; i++) {
+                    if (captions[i].iframe !== current) {
 
-                    col.innerHTML += `
+                        col.innerHTML += `
               <a href="solo.html?iframe=` + encodeURIComponent(captions1[i].iframe) + `&title=` + encodeURIComponent(captions1[i].title) + `&text=` + encodeURIComponent(captions1[i].text) + `" class="list-group-item list-group-item-action video-card" data-title="` + captions[i].data + `">
                 <div class="d-flex ">
                     <div class="ratio ratio-16x9 me-3" style="width: 150px; flex-shrink: 0; cursor: pointer;">
@@ -193,35 +213,35 @@
                 </div>
             </a>
                 `;
+                    };
+
                 };
-
             };
-        };
-        function shuffleArray(array) {
-            for (let i = array.length - 1; i > 0; i--) {
-                const j = Math.floor(Math.random() * (i + 1));
-                [array[i], array[j]] = [array[j], array[i]];
+            function shuffleArray(array) {
+                for (let i = array.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    [array[i], array[j]] = [array[j], array[i]];
+                }
+                return array;
             }
-            return array;
-        }
-        fetchPlaylist();
-    });
-    
-    function filterVideos() {
-        const searchInput = document.getElementById('searchBar').value.toLowerCase();
-        const videoCards = document.querySelectorAll('.video-card');
-
-        videoCards.forEach(card => {
-            const title = card.getAttribute('data-title').toLowerCase();
-            if (title.includes(searchInput)) {
-                card.classList.remove('hidden');
-            } else {
-                card.classList.add('hidden');
-            }
+            fetchPlaylist();
         });
-    }
 
-        
+        function filterVideos() {
+            const searchInput = document.getElementById('searchBar').value.toLowerCase();
+            const videoCards = document.querySelectorAll('.video-card');
+
+            videoCards.forEach(card => {
+                const title = card.getAttribute('data-title').toLowerCase();
+                if (title.includes(searchInput)) {
+                    card.classList.remove('hidden');
+                } else {
+                    card.classList.add('hidden');
+                }
+            });
+        }
+
+
         function loadData() {
             const urlParams = new URLSearchParams(window.location.search);
             const iframe = urlParams.get("iframe");
@@ -237,7 +257,7 @@
         }
 
         loadData();
-        
+
     </script>
 </body>
 
