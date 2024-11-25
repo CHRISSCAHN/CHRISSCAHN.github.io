@@ -29,6 +29,38 @@
             height: 100%;
             object-fit: cover;
         }
+
+        .d-flex.overflow-auto {
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+
+        .d-flex.overflow-auto::-webkit-scrollbar {
+            display: none;
+        }
+
+
+        .btn-outline-secondary.active {
+            background-color: #f1f1f1;
+            color: black;
+            font-weight: bold;
+            border-color: #ccc;
+        }
+
+        #filterCarousel {
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+
+        #filterCarousel::-webkit-scrollbar {
+            display: none;
+        }
+
+        #prevBtn:hover,
+        #nextBtn:hover {
+            background-color: #f1f1f1;
+            border-color: #aaa;
+        }
     </style>
 </head>
 
@@ -46,54 +78,85 @@
             </form>
             <div class="d-flex align-items-center">
                 <button class="btn btn-light me-2">Upload</button>
-                <div class="profile-container">
-                    <img src="images/chanchannnnn.jpg" class="profile-image" alt="Profile">
-                </div>
+                <a href="../index.html">
+                    <div class="profile-container">
+                        <img src="images/chanchannnnn.jpg" class="profile-image" alt="Profile">
+                    </div>
+                </a>
             </div>
         </div>
     </nav>
+    <div class="container-fluid my-3 position-relative">
 
-    <div class="container-fluid">
-        <div class="row">
-            <nav class="col-lg-2 col-md-3 d-md-block bg-light sidebar collapse show" id="sidebarMenu">
-                <div class="position-sticky pt-2">
-                    <ul class="nav flex-column">
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="index.html" style="color: black;">
-                                <i class="bi bi-house-door" style="color: black;"></i> Home
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#" style="color: black;">
-                                <i class="bi bi-play-btn" style="color: black;"></i> Subscriptions
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#" style="color: black;">
-                                <i class="bi bi-clock-history" style="color: black;"></i> History
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#" style="color: black;">
-                                <i class="bi bi-heart" style="color: black;"></i> Liked Videos
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
+        <button class="btn btn-light position-absolute start-0 top-50 translate-middle-y px-2 py-1 shadow-sm"
+            id="prevBtn" style="z-index: 10; border: 1px solid #ccc; border-radius: 50%;">
+            &lt;
+        </button>
 
 
-            <main class="col-lg-10 col-md-9 ms-sm-auto px-md-4">
-                <div class="row mt-3" id="videoContainer">
-                    <!-- cong -->
-
-
-                </div>
-            </main>
+        <div class="d-flex overflow-auto" id="filterCarousel"
+            style="white-space: nowrap; gap: 10px; scrollbar-width: none; width: 100%; justify-content: space-between; box-sizing: border-box;">
+            <button class="btn btn-outline-secondary btn-sm rounded-pill px-3" onclick="change('all');">All</button>
+            <button class="btn btn-outline-secondary btn-sm rounded-pill px-3" onclick="change('music');">Music</button>
+            <button class="btn btn-outline-secondary btn-sm rounded-pill px-3"
+                onclick="change('gaming');">Gaming</button>
+            <button class="btn btn-outline-secondary btn-sm rounded-pill px-3"
+                onclick="change('blog');">Blog</button>
+            <button class="btn btn-outline-secondary btn-sm rounded-pill px-3"
+                onclick="change('sports');">Sports</button>
+            <button class="btn btn-outline-secondary btn-sm rounded-pill px-3" onclick="change('news');">News</button>
+            <button class="btn btn-outline-secondary btn-sm rounded-pill px-3"
+                onclick="change('movies');">Movies</button>
+            <button class="btn btn-outline-secondary btn-sm rounded-pill px-3"
+                onclick="change('Coder');">Technology</button>
+            <button class="btn btn-outline-secondary btn-sm rounded-pill px-3"
+                onclick="change('science');">Science</button>
+            <button class="btn btn-outline-secondary btn-sm rounded-pill px-3"
+                onclick="change('entertainment');">Entertainment</button>
+            <button class="btn btn-outline-secondary btn-sm rounded-pill px-3"
+                onclick="change('travel');">Travel</button>
+            <button class="btn btn-outline-secondary btn-sm rounded-pill px-3"
+                onclick="change('variety');">Variety Shows</button>
         </div>
+
+
+        <button class="btn btn-light position-absolute end-0 top-50 translate-middle-y px-2 py-1 shadow-sm" id="nextBtn"
+            style="z-index: 10; border: 1px solid #ccc; border-radius: 50%;">
+            &gt;
+        </button>
+    </div>
+    <div class="container-fluid">
+
+        <div class="row mt-3" id="videoContainer">
+
+        </div>
+
+
+    </div>
     </div>
 
     <script>
+
+        const filterCarousel = document.getElementById('filterCarousel');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+
+
+        prevBtn.addEventListener('click', () => {
+            filterCarousel.scrollBy({
+                left: -200,
+                behavior: 'smooth',
+            });
+        });
+
+
+        nextBtn.addEventListener('click', () => {
+            filterCarousel.scrollBy({
+                left: 200,
+                behavior: 'smooth',
+            });
+        });
+
         function filterVideos() {
             const searchInput = document.getElementById('searchBar').value.toLowerCase();
             const videoCards = document.querySelectorAll('.video-card');
@@ -114,7 +177,7 @@
                 title: "HERCHURI",
                 text: "Cong TV • 1.5M views • 2 days ago",
                 data: "HERCHURI Cong TV",
-                kanino: "cong"
+                kanino: "blog"
             },
             {
                 iframe: '<iframe width="100%" height="100%" src="https://www.youtube.com/embed/xCSw6bPXZks?si=aRG8vOZkiGJbZ2dX" title="YouTube video player" frameborder="0"allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>',
@@ -128,55 +191,140 @@
                 title: "SINIO VS SHERNAN | Bwelta Balentong 11",
                 text: "Jonas Dichoso Official • 3M views • 2 days ago",
                 data: "SINIO VS SHERNAN | Bwelta Balentong 11 Jonas Dichoso Official fliptop",
-                kanino: "Fliptop"
+                kanino: "entertainment"
             },
             {
                 iframe: '<iframe width="100%" height="100%" src="https://www.youtube.com/embed/TC0pQ_sDMOo?si=x6umXqEOaWgUdTpr"title="YouTube video player" frameborder="0"allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>',
                 title: "Kapuso Mo, Jessica Soho: 6-ANYOS NA BATA, MAHIGIT 70 KILOGRAMS NA ANG TIMBANG",
                 text: "GMA PUBLIC AFFAIRS • 4M views • 2 days ago",
                 data: "GMA PUBLIC AFFAIRS kmjs Kapuso Mo, Jessica Soho: 6-ANYOS NA BATA, MAHIGIT 70 KILOGRAMS NA ANG TIMBANG",
-                kanino: "kmjs"
+                kanino: "entertainment"
             },
             {
                 iframe: '<iframe width="100%" height="100%"src="https://www.youtube.com/embed/OQElbW6LjKc?si=ukKgjMiEkBNYsRrl"title="YouTube video player" frameborder="0"allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>',
                 title: "Floods, landslides, wrecked homes: 'Pepito' leaves trail of destruction in Luzon | ANC",
                 text: "ANC 24/7 • 400k views • 2 days ago",
                 data: "bagyong pepito Floods, landslides, wrecked homes: 'Pepito' leaves trail of destruction in Luzon | ANC",
-                kanino: "anc"
+                kanino: "news"
             },
             {
                 iframe: '<iframe width="100%" height="100%"src="https://www.youtube.com/embed/F19pEZ-9qB4?si=6wa5WxBFIDKvbAV6" title="YouTube video player" frameborder="0"allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>',
                 title: "Family Feud: ‘HELLO, LOVE, AGAIN’ CAST, NAGKASUBUKAN SA HULAAN!",
                 text: "Family Feud Philippines • 1M views • 2 days ago",
                 data: "alden kathryn family feud Family Feud: ‘HELLO, LOVE, AGAIN’ CAST, NAGKASUBUKAN SA HULAAN!",
-                kanino: "family feud"
+                kanino: "entertainment"
             },
             {
                 iframe: '<iframe width="100%" height="100%" src="https://www.youtube.com/embed/Giw1VGlUAoY?si=JKfL2qlW2gwMtfQW" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>',
                 title: "Ikaw na late ikaw pa galit",
                 text: "MALUPITON OFFICIAL • 1.5M views • 7 months ago",
                 data: "Ikaw na late ikaw pa galit malupiton",
-                kanino: "malupiton"
+                kanino: "blog"
             },
             {
                 iframe: '<iframe width="100%" height="100%" src="https://www.youtube.com/embed/WKBYO9eSEts?si=-op-j-c3LhhuHBhT" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>',
                 title: "FINDING THE FINAL JUANA",
                 text: "Cong TV • 2.1M views • 3 wees ago",
                 data: "FINDING THE FINAL JUANA cong tv bok ",
-                kanino: "Cong"
+                kanino: "blog"
             },
             {
                 iframe: '<iframe width="100%" height="100%" src="https://www.youtube.com/embed/_i1SSHbNL2g?si=LeMzjztp0GYoAEqT" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>',
                 title: "The Ultimate Lie Detector Test: Junnie Boy and Vien",
                 text: "Viy Cortex • 4.3M views • 7 months ago",
                 data: "The Ultimate Lie Detector Test: Junnie Boy and Vien viy",
-                kanino: "viy"
+                kanino: "blog"
             },
+            {
+                iframe: '<iframe width="100%" height="100%" src="https://www.youtube.com/embed/va5VttU6usg?si=pHeGpwSAmP9PK9R7" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>',
+                title: "Ipagpatawad mo - VST & Company (Khel Pangilinan with Lyrics)",
+                text: "Khel Pangilinan • 500k views •2 months ago",
+                data: "Ipagpatawad mo - VST & Company (Khel Pangilinan with Lyrics) michael",
+                kanino: "music"
+            },
+            {
+                iframe: '<iframe width="100%" height="100%" src="https://www.youtube.com/embed/uhWwpwmKwl8?si=iSJRqh9TmgwO91JZ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>',
+                title: "Ako'y Sayo Ika'y Akin Lamang - IAXE (Khel Pangilinan With Lyrics)",
+                text: "Khel Pangilinan • 500k views •2 months ago",
+                data: "Ako'y Sayo Ika'y Akin Lamang - IAXE (Khel Pangilinan With Lyrics) michael",
+                kanino: "music"
+            },
+            {
+                iframe: '<iframe width="100%" height="100%" src="https://www.youtube.com/embed/ssqM_66FefI?si=z-MPi0SDVYFqFcCg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>',
+                title: "[FIL] M6 Wild Card Stage Day 1 | MGLZ vs RRQ BR Game 1",
+                text: "MPL PHILIPPINES • 500k views •2 months ago",
+                data: "[FIL] M6 Wild Card Stage Day 1 | MGLZ vs RRQ BR Game 1 ml mobile legends world champions mpl",
+                kanino: "gaming"
+            },
+            {
+                iframe: '<iframe width="100%" height="100%" src="https://www.youtube.com/embed/LXb3EKWsInQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>',
+                title: "Nature’s Beauty in 4K | Relaxing Music",
+                text: "Relaxation Music • 10M views • 3 weeks ago",
+                data: "relaxation nature 4K travel",
+                kanino: "travel"
+            },
+            {
+                iframe: '<iframe width="100%" height="100%" src="https://www.youtube.com/embed/iG5Csu2sN9c?si=xzXIyJAvXA1-EyTc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>',
+                title: "NBA 2023 Highlights: Clippers Vs Sixers",
+                text: "NBA Official • 2M views • 5 days ago",
+                data: "basketball nba highlights sports NBA 2023 Highlights: Clippers Vs Sixers",
+                kanino: "sports"
+            },
+            {
+                iframe: '<iframe width="100%" height="100%" src="https://www.youtube.com/embed/tgbNymZ7vqY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>',
+                title: "The Future of Space Exploration | NASA Live",
+                text: "NASA • 500k views • 1 month ago",
+                data: "science space exploration nasa",
+                kanino: "science"
+            },
+            {
+                iframe: '<iframe width="100%" height="100%" src="https://www.youtube.com/embed/TcMBFSGVi1c" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>',
+                title: "Avengers: Endgame Official Trailer",
+                text: "Marvel Studios • 250M views • 4 years ago",
+                data: "avengers endgame movies marvel trailer",
+                kanino: "movies"
+            },
+            {
+                iframe: '<iframe width="100%" height="100%" src="https://www.youtube.com/embed/okw-whFWGEo?si=GP3J_lgTOkUdNA1E" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>',
+                title: "Stop using pixels in your CSS! How and why to use REM and EM.",
+                text: "Ian Lenehan • 100k views • 2 days ago",
+                data: "px font-size web development css",
+                kanino: "Coder"
+            },
+            {
+                iframe: '<iframe width="100%" height="100%" src="https://www.youtube.com/embed/5qap5aO4i9A" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>',
+                title: "Lo-fi Hip Hop Radio - Chill Beats to Study",
+                text: "ChilledCow • 50M views • 1 year ago",
+                data: "lofi chill study beats music",
+                kanino: "music"
+            },
+            {
+                iframe: '<iframe width="100%" height="100%" src="https://www.youtube.com/embed/XvGqOyT1AaE?si=fMYRLntdKvXY3fmB" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>',
+                title: "BORACAY Island Hopping vs Land Tour • Alin ang Mas Maganda? • The Poor Traveler",
+                text: "The Poor Traveler • 800k views • 3 months ago",
+                data: "boracay philippines vlog travel BORACAY Island Hopping vs Land Tour • Alin ang Mas Maganda? • The Poor Traveler",
+                kanino: "travel"
+            },
+            {
+                iframe: '<iframe width="100%" height="100%" src="https://www.youtube.com/embed/Ki3LiiGvsK8?si=rO78SEANm033P9IR" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>',
+                title: "Top 10 plays from M5 World Championship",
+                text: "MPL Highlights • 2M views • 2 weeks ago",
+                data: "mobile legends mpl gaming highlights",
+                kanino: "gaming"
+            },
+            {
+                iframe: '<iframe width="100%" height="100%" src="https://www.youtube.com/embed/QG4Img_4EU8?si=IcdgIbxrpQWWEXzm" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>',
+                title: "[Knowing Bros] Literally Can't Stop Laughing 🤣 EXO Funny Game Moments Compilation",
+                text: "K Content Voyage • 1M views • 1 month ago",
+                data: "exo kpop [Knowing Bros] Literally Can't Stop Laughing 🤣 EXO Funny Game Moments Compilation entertainment variety shows",
+                kanino: "variety"
+            },
+            
         ];
         const shuffleArray = (array) => {
             for (let i = array.length - 1; i > 0; i--) {
-                const j = Math.floor(Math.random() * (i + 1)); 
-                [array[i], array[j]] = [array[j], array[i]]; 
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
             }
             return array;
         };
@@ -186,8 +334,8 @@
 
         for (let i = 0; i < shuffledCaptions.length; i++) {
             row.innerHTML += ` 
-            <!-- ` +shuffledCaptions[i].kanino + `-->
-             <div class="col-md-4 col-sm-6 mb-4 video-card" data-title="` + shuffledCaptions[i].data + `">
+            <!-- `      +shuffledCaptions[i].kanino + `-->
+             <div class="col-md-4 col-sm-6 mb-4 video-card" id="card" data-title="` + shuffledCaptions[i].data + `" data-category="` + shuffledCaptions[i].kanino + `">
                 <a href="solo.html?iframe=` + encodeURIComponent(shuffledCaptions[i].iframe) + `&title=` + encodeURIComponent(shuffledCaptions[i].title) + `&text=` + encodeURIComponent(shuffledCaptions[i].text) + `" class="text-muted text-decoration-none">
                 <div class="card" style="border: none; position: relative;">
                     <div class="card-img-top" style="height: 200px; overflow: hidden; border-radius: 20px; position: relative;">
@@ -204,11 +352,34 @@
             </div>
             `;
         }
-   
+
+        function change(category) {
+            const videoCards = document.querySelectorAll('.video-card');
+        
+            if (category === 'all') {
+                // If "all" is selected, show all video cards
+                videoCards.forEach(card => {
+                    card.classList.remove('hidden');
+                });
+            } else {
+                // Otherwise, hide all cards first
+                videoCards.forEach(card => {
+                    card.classList.add('hidden');
+                });
+        
+                // Show only the cards matching the selected category
+                const filteredCards = document.querySelectorAll(`.video-card[data-category="${category}"]`);
+                filteredCards.forEach(card => {
+                    card.classList.remove('hidden');
+                });
+            }
+        }
+        
+        
 
         window.history.scrollRestoration = 'manual';
         document.addEventListener('DOMContentLoaded', function () {
-          window.scrollTo(0, 0);
+            window.scrollTo(0, 0);
         });
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
