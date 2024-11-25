@@ -164,13 +164,13 @@
   <body>
     <div class="header text-center mt-2">
       <h1 class="h5 fw-bold">Page Not Found!</h1>
-      <p><a href="javascript:void(0);" id="dynamic-back" class="text-decoration-none text-muted">Back to Folder</a></p>
+      <p><a href="https://chrisscahn.github.io/" class="text-decoration-none text-muted">Home</a> / <span class="text-danger">404 Error</span></p>
     </div>
 
     <div class="container text-center py-3">
       <h1 class="display-3 fw-bold text-danger">404</h1>
       <p class="fs-5">Oops! Sorry, we could not find the page.</p>
-      <a href="javascript:void(0);" id="back-btn" class="btn btn-back-home mt-3">
+      <a href="https://chrisscahn.github.io/" class="btn btn-back-home mt-3">
         Back To Home →
       </a>
     </div>
@@ -238,21 +238,6 @@
       document.addEventListener('DOMContentLoaded', function () {
           window.scrollTo(0, 0);
       });
-      function getFolderIndexPath() {
-        // Get the current URL path
-        const path = window.location.pathname;
-        // Extract the folder part of the URL
-        const folderPath = path.substring(0, path.lastIndexOf('/')) || '/';
-        // Return the index.html path within the current folder
-        return folderPath + '/index.html';
-      }
-  
-      // Set the dynamic href for both "Back to Folder" and button
-      const backLink = document.getElementById('dynamic-back');
-      const backButton = document.getElementById('back-btn');
-  
-      backLink.href = getFolderIndexPath();
-      backButton.href = getFolderIndexPath();
     </script>
   </body>
 </html>
